@@ -10,8 +10,18 @@ __pycache__/
 *.out
 *.synctex.gz
 
+# Quarto 生成的中间文件（渲染后可重新生成）
+*_files/
+/.quarto/
+**/*.quarto_ipynb
+
+# 例外：需要上传到 GitHub 的 HTML 资源目录
+!ai_investment_files/
+!AI_Investment_files/
+!day1_pm_files/
+!trial_files/
+!W1_AI_Era_Empirical_Research_files/
+
 # 系统文件
 .DS_Store
 Thumbs.db
-/.quarto/
-**/*.quarto_ipynb
