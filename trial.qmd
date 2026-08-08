@@ -1,0 +1,27 @@
+---
+title: "Quarto 基础"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+要查看极坐标轴上的线图演示，请参见 @fig-polar。
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "极坐标轴上的线图"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```

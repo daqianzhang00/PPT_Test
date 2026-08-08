@@ -1,0 +1,689 @@
+---
+title: "AI 时代经济学研究工具与方法 · 基础篇"
+subtitle: "Day 1 下午：Git/GitHub 深化 — 与AI协作的版本控制安全网"
+author: "陈志远（中国人民大学商学院贸易经济系）"
+institute: "江西财经大学数字经济学院"
+date: "2026-07-29"
+format:
+  revealjs:
+    theme: [default, JFDE-theme.scss]
+    css: JFDE-theme.scss
+    slide-number: true
+    progress: true
+    code-fold: false
+    code-tools: true
+    highlight-style: github
+    pdf-separate-fragments: false
+    width: 1920
+    height: 1080
+    margin: 0.05
+    transition: slide
+    background-transition: fade
+    toc: true
+    toc-depth: 1
+    chalkboard:
+      buttons: true
+    preview-links: auto
+execute:
+  echo: true
+  warning: false
+  message: false
+  eval: false
+  cache: false
+lang: zh
+html-math-method: katex
+---
+
+## 上午回顾与下午目标
+
+**上午搭好了研究工作台**
+
+| 核心概念 | 解释 |
+|:---|:---|
+| **基座** | VS Code 把数据、代码、论文、终端和 AI 对话放进同一个项目 |
+| **工具链** | Git、Python、Jupyter、GitHub 账号、VS Code 扩展已就绪 |
+| **项目** | demo-project 已打开，虚拟环境已创建，数据已生成 |
+
+. . .
+
+**下午完成四件事**
+
+1. 理解版本控制为什么是 AI 时代的“安全网”
+2. 掌握 Git 本地工作流：`init → add → commit → diff → log`
+3. 学会版本回退、`.gitignore` 和分支管理
+4. 把项目推送到 GitHub，理解远程协作的基本流程
+
+::: {.notes}
+上午有同学 Git 还没装好或者 SSH 还没配通的——下午本地 Git 操作（init、add、commit）不需要网络和 GitHub，所有人都能跟上。
+:::
+
+# 一、为什么 AI 时代更需要版本控制？ {background-color="#003153"}
+
+## Git vs 云盘：这不是同一个东西
+
+| | Git | 云盘（百度网盘 / OneDrive） |
+|:---|:---|:---|
+| 记录内容 | 每次改动的**具体差异**（哪一行、谁改的、为什么） | 文件版本或同步状态 |
+| 回退方式 | 回到**任意一次 commit**，精确到行 | 通常只能找近期版本 |
+| 适合协作 | 能合并、比较、审查 | 容易出现冲突文件（`final(1).docx`） |
+| 适合 AI 协作 | 能看 AI **具体改了什么**，逐行审查 | 只能看到文件变了 |
+
+. . .
+
+::: {.concept-box}
+**Git 记录的是“改动历史”，不是“文件快照”**
+
+云盘像拍照——你知道文件在某个时间点长什么样。Git 像录像——你知道每一步怎么变成现在这样的。
+:::
+
+---
+
+## 血泪教训：没有版本控制的代价
+
+::: {.warning-box}
+**教训 1：AI 一次删掉了我的整个数据文件夹**
+
+某次让 AI 帮我整理项目文件，它把 `data/` 和 `paper/` 一起删了，然后轻声说了句 *“Sorry”*。还好我接了云盘，从回收站找回来了。没有版本控制的话，只能从头再来。
+:::
+
+. . .
+
+::: {.warning-box}
+**教训 2：AI 写了 30 页“看起来正确”的数学证明**
+
+AI 花了半小时写了一份 30 页的证明。我和合作者读了两周，发现证明是错的。如果有 Git 记录，错误不会悄无声息地进入正式文档。
+:::
+
+. . .
+
+**核心原则**：AI 越快，越需要知道它改了什么、什么时候改的、能不能回退。
+
+---
+
+## AI 协作安全网：五条规则
+
+| 规则 | 具体做法 | 为什么 |
+|:---|:---|:---|
+| ① 每任务一 commit | 让 AI 做一件事 → `git diff` → 确认 → commit | 把 AI 修改切成可审阅、可回滚的小单元 |
+| ② 先 diff 再接受 | 永远不看 AI 的“解释”，直接看 `git diff` | 不被流畅话术带偏 |
+| ③ 分支隔离 | 大改动先在分支做，确认后再合并到 main | 不污染主线 |
+| ④ 远程备份 | `git push` 到 GitHub | 换电脑、合作者接手都不怕 |
+| ⑤ 记录 prompt | 把问 AI 的 prompt 和验证结果写进 commit message 或 audit-log | 可追溯“为什么这么改” |
+
+. . .
+
+**今天下午的目标**：让你能独立执行规则 ①、②、④。规则 ③（分支）也会讲到。
+
+---
+
+## Git 三区模型：理解 add 和 commit 的区别
+
+::: {style="font-size: 0.95em;"}
+```text
+工作目录 (Working Directory)         暂存区 (Staging Area)          仓库 (Repository)
+   │                                      │                            │
+   │  git add                              │  git commit                │
+   │  ──────────────────────────────────►  │  ────────────────────────► │
+   │                                      │                            │
+   │  你编辑的文件                          │  你确认要保存的改动            │  永久记录的历史
+   │  （可能乱七八糟）                        │  （挑选过、整理过）            │  （可回退到任意节点）
+```
+:::
+
+. . .
+
+| 区域 | 通俗理解 | 查看命令 |
+|:---|:---|:---|
+| 工作目录 | 你正在改的文件 | 直接看文件 |
+| 暂存区 | “购物车”：确认要保存的改动 | `git diff --staged` |
+| 仓库 | “已付款”：永久记录 | `git log` |
+
+. . .
+
+::: {.callout-tip}
+**为什么需要暂存区？** 让你可以“挑选”哪些改动放进同一次 commit，而不是把乱七八糟的修改捆在一起。
+:::
+
+# 二、本地 Git 工作流讲练 {background-color="#003153"}
+
+## 第一次 commit：把项目纳入版本控制
+
+**在 demo-project 目录下，跟着做：**
+
+```bash
+cd demo-project
+
+# 1. 初始化 Git 仓库
+git init -b main
+
+# 2. 查看当前状态
+git status
+```
+
+. . .
+
+```bash
+# 3. 把所有文件加入暂存区
+git add .
+
+# 4. 创建第一次 commit
+git commit -m "init: 项目纳入版本控制"
+
+# 5. 查看提交历史
+git log --oneline
+```
+
+. . .
+
+::: {.callout-tip}
+**实操时间**：现在请每位同学在自己的 demo-project 完成以上 5 步。完成后终端应显示一条 commit 记录。
+:::
+
+---
+
+## 第二次 commit：做一个有意义的改动
+
+**打开 `audit-log.md`，加一行记录，然后提交：**
+
+```bash
+# 1. 编辑文件（用 VS Code 打开 audit-log.md，添加一行日期和备注）
+#    例如：## 2026-08-XX   Day 1 下午 Git 实操
+
+# 2. 查看改动
+git status
+git diff
+
+# 3. 加入暂存区并提交
+git add audit-log.md
+git commit -m "docs: 记录 Day 1 Git 实操"
+
+# 4. 查看历史
+git log --oneline -3
+```
+
+. . .
+
+**关键动作**
+
+| 命令 | 什么时候用 |
+|:---|:---|
+| `git status` | 每次动手前先看：改了哪些文件？ |
+| `git diff` | 提交前审查：具体改了什么？ |
+| `git add <file>` | 只加确认过的文件，不要 `git add .` 盲加 |
+| `git commit -m “...”` | 写清楚**做了什么**、**为什么** |
+
+---
+
+## Commit Message 怎么写？
+
+::: {.example-box}
+**好的 commit message**
+
+```
+feat: 添加数字化转型 DID 估计脚本
+fix: 修正标准误聚类层级（省份→企业）
+docs: 更新 README 中的环境要求
+refactor: 将数据清洗逻辑提取为独立函数
+```
+:::
+
+. . .
+
+**约定式提交格式**
+
+```
+<类型>: <简短描述>
+
+类型：feat（新功能）| fix（修复）| docs（文档）| refactor（重构）
+     | test（测试）| chore（杂项）| style（格式）
+```
+
+. . .
+
+::: {.callout-tip}
+Commit message 不是写给你现在看的——是写给三个月后的自己、合作者和 AI agent 看的。
+:::
+
+---
+
+## 查看历史：`git log` 和 `git diff`
+
+**查看提交历史**
+
+```bash
+git log --oneline          # 简洁版，一行一条
+git log --oneline -5       # 最近 5 条
+git log --graph --oneline  # 带分支图（后面讲分支时有用）
+```
+
+. . .
+
+**比较差异**
+
+```bash
+git diff                   # 工作目录 vs 暂存区（还没 add 的改动）
+git diff --staged          # 暂存区 vs 最新 commit（已 add 但未 commit）
+git diff HEAD~1            # 最新 commit vs 上一次 commit
+git diff <commit1> <commit2>  # 任意两次 commit 之间的差异
+```
+
+. . .
+
+::: {.callout-tip}
+**`git diff` 是你在接受 AI 修改前最重要的命令。** 不看 diff 就看代码，等于闭着眼睛签合同。
+:::
+
+---
+
+## 实操检查点 1
+
+| 检查项 | 命令 | ✅ |
+|:---|:---|:---|
+| 仓库已初始化 | `git status` 不报错 | ☐ |
+| 至少有 2 次 commit | `git log --oneline` | ☐ |
+| 能用 diff 看改动 | `git diff HEAD~1` | ☐ |
+| commit message 有意义 | `git log --oneline` 不是 “update” | ☐ |
+
+. . .
+
+**如果有问题请举手示意，确保所有人都跟上。**
+
+# 三、版本回退：出错了怎么办？ {background-color="#003153"}
+
+## 还没 commit：撤销工作目录的改动
+
+**场景**：你（或 AI）改了一个文件，还没 add，想撤销。
+
+```bash
+# 撤销某个文件的改动（回到上次 commit 的状态）
+git restore <file>
+
+# 撤销所有未暂存的改动（⚠️ 不可恢复）
+git restore .
+```
+
+. . .
+
+**场景**：已经 `git add` 了，但还没 commit，想取消暂存。
+
+```bash
+# 把文件从暂存区撤回到工作目录（改动还在，只是不参与下次 commit）
+git restore --staged <file>
+```
+
+---
+
+## 已经 commit：三种回退方式
+
+| 方式 | 命令 | 效果 | 危险度 |
+|:---|:---|:---|:---|
+| `--soft` | `git reset --soft HEAD~1` | 撤销 commit，**保留所有改动在暂存区**，可重新 commit | 🟢 最安全 |
+| `--mixed`（默认） | `git reset HEAD~1` | 撤销 commit，**保留改动但取消暂存** | 🟡 安全 |
+| `--hard` | `git reset --hard HEAD~1` | ⚠️ **完全丢弃**最近一次 commit 的所有改动 | 🔴 危险 |
+
+. . .
+
+```bash
+# 回到指定 commit（用 git log 找到目标 commit 的 hash）
+git reset --soft <commit-hash>
+```
+
+---
+
+## `git revert`：更安全的“撤销”
+
+**与 reset 的区别**
+
+`git reset` 删除历史 → 适合本地未推送的 commit。  
+`git revert` 创建“反向 commit”来抵消目标 commit → 不删除历史，适合已推送的 commit。
+
+```bash
+# 撤销最近一次 commit，但保留历史记录
+git revert HEAD --no-edit
+```
+
+. . .
+
+| 场景 | 推荐方式 |
+|:---|:---|
+| 本地未推送，丢弃最近修改 | `git reset --hard HEAD~1` |
+| 本地未推送，保留修改重提交 | `git reset --soft HEAD~1` |
+| 已推送到 GitHub，撤销某个 commit | `git revert <commit>` |
+| 已推送，确定要重写历史（团队协作慎用） | `git reset --hard` + `git push --force-with-lease` |
+
+---
+
+## 实操：回退一次错误修改
+
+**跟着做：**
+
+```bash
+# 1. 故意加一行错误内容
+echo "" >> audit-log.md
+echo "这是一条错误的记录" >> audit-log.md
+
+# 2. 查看改动
+git diff
+
+# 3. 撤销（还没 add，用 restore）
+git restore audit-log.md
+
+# 4. 确认已恢复
+git status
+```
+
+. . .
+
+**再试一次：commit 后回退**
+
+```bash
+# 1. 故意 commit 一个错误
+echo "临时错误" >> audit-log.md
+git add audit-log.md
+git commit -m "temp: 故意提交的错误"
+
+# 2. 用 revert 安全地撤销
+git revert HEAD --no-edit
+
+# 3. 查看历史（revert 创建了新 commit）
+git log --oneline -3
+```
+
+---
+
+## `.gitignore`：告诉 Git 忽略什么
+
+::: {.concept-box}
+**不是所有文件都应该进入版本控制**
+
+有些文件可以由源文件重新生成（编译产物、Python 缓存），有些是个人配置（本地设置），有些太大（数据集）——这些都不该进入 Git。
+:::
+
+. . .
+
+**demo-project 的 `.gitignore` 示例**
+
+```text
+# Python 虚拟环境与缓存（可再生成，不入库）
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# LaTeX 编译中间产物（由 .tex 源文件再生成）
+*.aux
+*.log
+*.out
+*.synctex.gz
+
+# 系统文件
+.DS_Store
+Thumbs.db
+```
+
+. . .
+
+**原则**：**源文件入库，产物不入库**。`.tex` 入库，`.pdf` 不入库（或单独 release）;`.py` 入库，`__pycache__` 不入库。
+
+# 四、分支：并行工作不冲突 {background-color="#003153"}
+
+## 为什么需要分支？
+
+::: {style="font-size: 0.95em;"}
+```text
+main ────●────●────●────●────●  （主线：已验证的稳定版本）
+              \
+               └── ●────●────●  （feature 分支：正在试验的新方法）
+                          │
+                    合并回 main ──→ ●
+```
+:::
+
+. . .
+
+**研究场景中的分支**
+
+| 场景 | 分支名 | 做什么 |
+|:---|:---|:---|
+| 试一个新的识别策略 | `try-iv-approach` | 在分支里改模型，不影响主线结果 |
+| 让 AI 做一次大改 | `ai-refactor-script` | AI 的改动先隔离，验证后再合并 |
+| 合作者改了一部分 | `collab-zhang` | 各自在分支工作，定期合并 |
+
+---
+
+## 分支基本操作
+
+**创建和切换分支**
+
+```bash
+git branch                    # 查看所有分支
+git branch try-new-model      # 创建新分支（但不切换）
+git switch try-new-model      # 切换到新分支
+# 或一步到位：
+git switch -c try-new-model   # 创建并切换
+```
+
+. . .
+
+**在分支上工作并合并**
+
+```bash
+# 在 try-new-model 分支上做改动、commit...
+git add .
+git commit -m "experiment: try alternative specification"
+
+# 切回 main，合并分支
+git switch main
+git merge try-new-model
+
+# 分支用完可以删除
+git branch -d try-new-model
+```
+
+. . .
+
+::: {.callout-tip}
+**给 AI 的规则**：让 AI 做探索性改动时，要求它先创建分支。验证通过后再合并到 main。
+:::
+
+---
+
+## 实操：创建并合并一个分支
+
+**跟着做：**
+
+```bash
+# 1. 创建并切换到新分支
+git switch -c practice-branch
+
+# 2. 做一个改动并 commit
+echo "" >> audit-log.md
+echo "## 分支实操记录" >> audit-log.md
+git add audit-log.md
+git commit -m "docs: 分支实操记录"
+
+# 3. 切回 main，看看 audit-log.md（应该没有上面那行）
+git switch main
+cat audit-log.md
+
+# 4. 合并分支
+git merge practice-branch
+
+# 5. 确认改动已合并
+cat audit-log.md
+
+# 6. 删除分支
+git branch -d practice-branch
+```
+
+# 五、远程协作：GitHub {background-color="#003153"}
+
+## 把本地仓库推送到 GitHub
+
+**本地 Git 负责记录，GitHub 负责同步和协作。**
+
+. . .
+
+**方法一：用 GitHub CLI（推荐，最简单）**
+
+```bash
+# 安装 GitHub CLI（如果没有）：https://cli.github.com/
+gh auth login
+gh repo create demo-project --private --source=. --remote=origin --push
+```
+
+. . .
+
+**方法二：手动添加远程仓库**
+
+```bash
+# 先在 GitHub 网页上创建一个空仓库（不要勾选 README）
+# 然后：
+git remote add origin git@github.com:your-name/demo-project.git
+git push -u origin main
+```
+
+. . .
+
+**之后每次推送**
+
+```bash
+git push
+```
+
+---
+
+## 克隆和 Pull
+
+**如果你换了一台电脑，或者合作者要接手：**
+
+```bash
+# 克隆（把远程仓库下载到本地）
+git clone git@github.com:your-name/demo-project.git
+
+# 拉取最新改动（合作者 push 了新的 commit）
+git pull
+```
+
+. . .
+
+| 命令 | 方向 | 什么时候用 |
+|:---|:---|:---|
+| `git push` | 本地 → 远程 | 做完一轮工作后备份 |
+| `git pull` | 远程 → 本地 | 开始工作前同步合作者的改动 |
+| `git clone` | 远程 → 本地（首次） | 新电脑、新环境 |
+
+---
+
+## Pull Request：学术协作的“同行评审”
+
+::: {.concept-box}
+**Pull Request（PR）是什么？**
+
+PR 是 GitHub 上的“改动提案”。你做完一个分支的改动，发起 PR → 合作者审查 → 讨论修改 → 合并到 main。
+:::
+
+. . .
+
+**PR 在研究中的价值**
+
+- 让导师或合作者在合并前审查你的代码和结果
+- 把讨论（为什么这样改、有没有更好的方法）留在改动旁边
+- 适合论文修改轮次、代码审查、AI 改动确认
+
+. . .
+
+::: {.callout-tip}
+**今天不要求掌握 PR 操作**，先理解概念。当你开始团队协作或用 AI 做大改动时，PR 是自然延伸。
+:::
+
+# 六、VS Code 图形界面操作 Git {background-color="#003153"}
+
+## Source Control 面板
+
+**VS Code 左侧第三个图标（分支图标）= 图形化的 Git**
+
+| 操作 | 命令行 | VS Code 图形界面 |
+|:---|:---|:---|
+| 查看改动 | `git status` | Source Control 面板自动显示 |
+| 查看差异 | `git diff` | 点击文件名即显示左右对比 |
+| 暂存文件 | `git add <file>` | 点击文件名旁的 `+` |
+| 提交 | `git commit -m “...”` | 输入 message → 点击 ✓ |
+| 查看历史 | `git log` | 左侧 Timeline 面板或 GitLens |
+
+. . .
+
+**命令行与 GUI 不冲突**
+
+- 命令行更精确、可脚本化、适合教学
+- GUI 更直观、适合快速浏览差异和文件状态
+- **建议**：两个都学。日常用 GUI 浏览，精确操作用命令行。
+
+---
+
+## GitLens：让历史可视化
+
+**安装 GitLens 后，VS Code 额外提供：**
+
+- **行级 blame**：每一行代码旁边显示“谁、什么时候、为什么”改的
+- **文件历史**：右键文件 → “Open File History”
+- **commit 详情**：点击任意 commit 查看完整差异
+
+. . .
+
+::: {.example-box}
+**研究场景**
+
+三个月后回头看自己的回归脚本，不记得当时为什么选了那个控制变量。
+
+→ GitLens blame 显示：那行是某次 commit 加的，commit message 写着 “add firm size as control per reviewer suggestion”。
+:::
+
+---
+
+## 实操检查点 2
+
+| 检查项 | 命令 / 操作 | ✅ |
+|:---|:---|:---|
+| 已完成至少 3 次 commit | `git log --oneline` | ☐ |
+| 会查看 diff | `git diff HEAD~1` | ☐ |
+| 会回退未 commit 的改动 | `git restore <file>` | ☐ |
+| 会安全撤销已 commit | `git revert HEAD --no-edit` | ☐ |
+| `.gitignore` 已配置 | 确认 `__pycache__` 等不在 `git status` 中 | ☐ |
+| 会创建和合并分支 | `git switch -c` + `git merge` | ☐ |
+| 项目已推送到 GitHub | `git remote -v` 有输出 | ☐ |
+| VS Code Source Control 面板能用 | 点击 Source Control 图标看到改动 | ☐ |
+
+---
+
+## Day 1 总结：你今天拥有了什么？
+
+::: {.concept-box}
+**从零到可复现研究工作台**
+:::
+
+| 能力 | 具体能做什么 |
+|:---|:---|
+| 🔧 **统一工作台** | VS Code 里管理文件、终端、Git、AI 对话 |
+| 🐍 **可复现环境** | Python 虚拟环境 + Jupyter，每个项目独立 |
+| 🛡️ **版本控制安全网** | `init → add → commit → diff → log`，每一步可回退 |
+| ⏪ **回退能力** | `restore` / `reset` / `revert`，出错不 panic |
+| 🌿 **分支管理** | 试验新方法不影响主线，AI 改动先隔离 |
+| ☁️ **远程备份** | `push` 到 GitHub，换电脑也不怕 |
+| 🤖 **AI 协作规则** | 每任务一 commit、先 diff 再接受、记录 prompt |
+
+. . .
+
+::: {.example-box}
+**明天预告（Day 2）**
+
+- 上午：Markdown 语法 + Jupyter 数据探索（用 demo-project 的 CSV 做描述统计）
+- 下午：LaTeX 中文写作（`ctexart` + `xelatex`）+ AI 助手入门（Copilot / Chat / Claude Code 的分工与边界）
+:::
+
+# Q&A {background-color="#003153"}
+
+- **Day 2 上午** Markdown + Jupyter/Python 数据探索
+- **Day 2 下午** LaTeX 中文写作 + AI 助手入门 + 闭环
+- **Email** chenzhiyuan@rmbs.ruc.edu.cn
+- **个人主页** <https://zhiyuanryanchen.github.io>

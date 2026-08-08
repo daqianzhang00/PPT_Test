@@ -1,0 +1,149 @@
+:root {
+  --ruc-red: #003153;        /* Prussian Blue — primary */
+  --ruc-red-dark: #001f36;   /* darker Prussian for hover/emphasis */
+  --ruc-gold: #00A8CC;       /* Cyan Blue — accent */
+  --surface: #fbfbfc;
+  --surface-alt: #f3f5f7;
+  --text: #1f2933;
+  --muted: #52606d;
+  --border: #d9e2ec;
+  --code-bg: #f6f8fa;
+}
+
+body {
+  color: var(--text);
+  background: #ffffff;
+  line-height: 1.78;
+}
+
+.quarto-title-block .title,
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ruc-red);
+  letter-spacing: 0.01em;
+}
+
+.quarto-title-block .subtitle,
+.quarto-title-meta,
+.quarto-title-meta-heading,
+.quarto-title-meta-contents {
+  color: var(--muted);
+}
+
+#quarto-content main.content {
+  max-width: 980px;
+}
+
+p,
+li {
+  font-size: 1.03rem;
+}
+
+a {
+  color: var(--ruc-red);
+}
+
+a:hover {
+  color: var(--ruc-red-dark);
+}
+
+blockquote {
+  border-left: 4px solid var(--ruc-gold);
+  background: var(--surface);
+  color: var(--muted);
+  padding: 0.9rem 1rem;
+}
+
+code,
+pre,
+.sourceCode {
+  font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+pre,
+div.sourceCode {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+pre code {
+  font-size: 0.92rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.98rem;
+}
+
+thead th {
+  background: var(--ruc-red);
+  color: #fff;
+  border: 1px solid var(--ruc-red);
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 0.7rem 0.8rem;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--surface);
+}
+
+.callout {
+  border-radius: 12px;
+  border-width: 1px;
+}
+
+.callout.callout-note,
+.callout.callout-important {
+  background: #fff8ec;
+  border-color: #f4d58d;
+}
+
+.callout.callout-warning {
+  background: #fff4f4;
+  border-color: #e9b4b4;
+}
+
+.callout.callout-tip {
+  background: #f2f7ff;
+  border-color: #bdd5ff;
+}
+
+.callout .callout-title {
+  color: var(--ruc-red);
+  font-weight: 700;
+}
+
+.figure,
+figure {
+  margin: 1.5rem auto;
+}
+
+.figure-caption,
+figcaption {
+  color: var(--muted);
+  font-size: 0.94rem;
+  text-align: center;
+}
+
+.toc-actions,
+#TOC {
+  font-size: 0.95rem;
+}
+
+#TOC a {
+  text-decoration: none;
+}
+
+#TOC a:hover {
+  text-decoration: underline;
+}

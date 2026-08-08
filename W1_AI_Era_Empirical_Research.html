@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="zh-Hans"><head>
+<script src="W1_AI_Era_Empirical_Research_files/libs/clipboard/clipboard.min.js"></script>
+<script src="W1_AI_Era_Empirical_Research_files/libs/quarto-html/tabby.min.js"></script>
+<script src="W1_AI_Era_Empirical_Research_files/libs/quarto-html/popper.min.js"></script>
+<script src="W1_AI_Era_Empirical_Research_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="W1_AI_Era_Empirical_Research_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="W1_AI_Era_Empirical_Research_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="W1_AI_Era_Empirical_Research_files/libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="陈志远">
+  <meta name="dcterms.date" content="2026-04-18">
+  <title>经济与商务实证研究方法</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="W1_AI_Era_Empirical_Research_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="W1_AI_Era_Empirical_Research_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="W1_AI_Era_Empirical_Research_files/libs/revealjs/dist/theme/quarto-3ef45571b8ac9ece4e64c812e7f25479.css">
+  <link rel="stylesheet" href="jufe-theme.scss">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link href="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">经济与商务实证研究方法</h1>
+  <p class="subtitle">第 1 周：研究设计、因果推断与 AI 时代实证研究</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+陈志远
+</div>
+        <p class="quarto-title-affiliation">
+            中国人民大学商学院
+          </p>
+    </div>
+</div>
+
+  <p class="date">2026-04-18</p>
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">目录</h2>
+<ul>
+<li><a href="#/一三类实证问题" id="/toc-一三类实证问题">一、三类实证问题</a></li>
+<li><a href="#/二因果推断的基本问题" id="/toc-二因果推断的基本问题">二、因果推断的基本问题</a></li>
+<li><a href="#/三研究设计工具箱" id="/toc-三研究设计工具箱">三、研究设计工具箱</a></li>
+<li><a href="#/四ai-时代的实证研究格局" id="/toc-四ai-时代的实证研究格局">四、AI 时代的实证研究格局</a></li>
+<li><a href="#/本讲要点" id="/toc-本讲要点">本讲要点</a></li>
+<li><a href="#/参考文献" id="/toc-参考文献">参考文献</a></li>
+</ul>
+</nav>
+</section>
+<section id="你研究能力的边界有多大" class="slide level2">
+<h2>你研究能力的边界有多大？</h2>
+<div class="fragment">
+<div class="example-box">
+<p><strong>2010 年代的研究边界</strong></p>
+<ul>
+<li><em>文献综述</em>：手工阅读 200 篇论文需要数月</li>
+<li><em>测度</em>：人工编码 1000 条文本需要数周</li>
+<li><em>稳健性检验</em>：每次改变规格需要重新跑代码</li>
+<li><em>复现</em>：一个数据管理流程写出来就是一学期</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<div class="concept-box">
+<p><strong>2026 年的研究边界</strong></p>
+<ul>
+<li><em>文献综述</em>：LLM 筛选 10,000 篇摘要，一小时内归类</li>
+<li><em>测量</em>：提示词标注百万条政策文本，带验证</li>
+<li><em>稳健性</em>：AI辅助批量规格搜索，带程序检验</li>
+<li><em>复现</em>：AI 读懂代码逻辑，生成可执行程序与手册</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="本课程的核心承诺" class="slide level2">
+<h2>本课程的核心承诺</h2>
+<div class="fragment">
+<div class="concept-box">
+<p><strong>不是“学一些 AI 工具”</strong></p>
+<p>是学习 <em>AI 如何改变了哪些研究问题是可行的</em>—— 以及当 AI 介入时，研究者的判断在哪里不能缺席。</p>
+</div>
+</div>
+<div class="fragment">
+<p><strong>五个支柱，贯穿整个学期</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">支柱</th>
+<th style="text-align: left;">核心问题</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">减少形式因果推断</td>
+<td style="text-align: left;">什么使识别策略可信？</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">因果机器学习</td>
+<td style="text-align: left;">ML 如何辅助识别，而非替代它？</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">结构估计</td>
+<td style="text-align: left;">什么问题只能用结构模型回答？</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LLM 文本分析</td>
+<td style="text-align: left;">如何用 AI 构建可靠的测量？</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AI 研究自动化</td>
+<td style="text-align: left;">边界在哪里？治理规则是什么？</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="但-ai-不会替你思考" class="slide level2">
+<h2>但 AI 不会替你思考</h2>
+<div class="warning-box">
+<p><strong>虚假自信风险（False-Confidence Risk）</strong></p>
+<p>AI 工具扩大了研究的<em>规模</em>，但不能替代研究者的<em>判断</em>。</p>
+<ul>
+<li><em>幻觉引用</em>：GPT 自信给出从未存在的文献</li>
+<li><em>无验证代码</em>：Copilot 写出“看起来对”却计算错误的统计量</li>
+<li><em>自动化 p-hacking</em>：大规模规格搜索而不控制多重检验</li>
+<li><em>测量漂移</em>：同一提示词在不同上下文产生不一致标注</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>本课程的回应：信任但验证（Trust but Verify）</strong></p>
+<p>每次使用 AI 工具，你都需要留下： 使用了什么工具 / 做了什么任务 / 接受了什么 / 拒绝了什么 / 如何验证</p>
+</div>
+</section>
+<section class="slide level2">
+
+</section>
+<section>
+<section id="一三类实证问题" class="title-slide slide level1 center" data-background-color="#003153">
+<h1>一、三类实证问题</h1>
+
+</section>
+<section id="实证研究的三种提问方式" class="slide level2">
+<h2>实证研究的三种提问方式</h2>
+<div class="concept-box">
+<p><strong>描述性问题（Descriptive）</strong></p>
+<p><em>世界是什么样的？</em></p>
+<p>“中国企业 R&amp;D 支出占销售额的比例有多高？”</p>
+</div>
+<div class="fragment">
+<div class="example-box">
+<p><strong>因果问题（Causal）</strong></p>
+<p><em>某一变量的变化导致了什么？</em></p>
+<p>“政府补贴是否提高了企业 R&amp;D 支出？”</p>
+</div>
+</div>
+<div class="fragment">
+<div class="concept-box">
+<p><strong>反事实问题（Counterfactual）</strong></p>
+<p><em>如果政策不同，结果会怎样？</em></p>
+<p>“如果将补贴提高 50%，R&amp;D 支出会增加多少？”</p>
+</div>
+</div>
+</section>
+<section id="三类问题需要不同工具" class="slide level2">
+<h2>三类问题需要不同工具</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">问题类型</th>
+<th style="text-align: left;">核心需求</th>
+<th style="text-align: left;">主要方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><em>描述性</em></td>
+<td style="text-align: left;">代表性样本 + 准确测量</td>
+<td style="text-align: left;">描述统计、指数构建、LLM 测量</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>因果</em></td>
+<td style="text-align: left;">外生变异（识别策略）</td>
+<td style="text-align: left;">DID、IV、RD、实验</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>反事实</em></td>
+<td style="text-align: left;">结构模型（机制）</td>
+<td style="text-align: left;">需求估计、引力模型、DSGE</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<div class="warning-box">
+<p><strong>最常见的混淆</strong></p>
+<p>把<em>相关性</em>当作<em>因果</em>，或把<em>局部处理效应</em>外推为<em>政策效果</em>。</p>
+<p>回归系数 <span class="math inline">\hat{\beta}</span> 从来不是自动的因果估计量—— <em>识别策略</em>才是让 <span class="math inline">\hat{\beta}</span> 具有因果含义的东西。</p>
+</div>
+</div>
+</section>
+<section id="练习给这些问题分类" class="slide level2">
+<h2>练习：给这些问题分类</h2>
+<p>下面每个问题是描述性、因果，还是反事实？</p>
+<div class="fragment">
+<ol type="1">
+<li>“北京 PM2.5 浓度近十年如何变化？”</li>
+</ol>
+</div>
+<div class="fragment">
+<p>&nbsp; → &nbsp; <strong>描述性</strong></p>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li>“空气污染是否缩短了北京居民的预期寿命？”</li>
+</ol>
+</div>
+<div class="fragment">
+<p>&nbsp; → &nbsp; <strong>因果</strong></p>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>“如果北京实施更严格的排放标准，死亡率会下降多少？”</li>
+</ol>
+</div>
+<div class="fragment">
+<p>&nbsp; → &nbsp; <strong>反事实</strong></p>
+</div>
+<div class="fragment">
+<ol start="4" type="1">
+<li>“哪些行业在降污方面表现最差？”</li>
+</ol>
+</div>
+<div class="fragment">
+<p>&nbsp; → &nbsp; <strong>描述性</strong></p>
+</div>
+<div class="fragment">
+<ol start="5" type="1">
+<li>“企业面临碳税会减少多少排放量？”</li>
+</ol>
+</div>
+<div class="fragment">
+<p>&nbsp; → &nbsp; <strong>反事实</strong>（需结构模型）</p>
+</div>
+</section>
+<section id="ai-工具与问题类型的匹配" class="slide level2">
+<h2>AI 工具与问题类型的匹配</h2>
+<div class="example-box">
+<p><strong>AI 在描述性研究中最强</strong></p>
+<p>LLM 标注、文本分类、非结构化数据测量—— AI 工具天然擅长大规模描述性测量任务。</p>
+</div>
+<div class="fragment">
+<div class="warning-box">
+<p><strong>因果与反事实问题不能外包给 AI</strong></p>
+<p>无论 AI 生成多少代码，<em>识别假设</em>必须由研究者来论证。</p>
+<p>“平行趋势假设成立”不是 AI 能替你证明的—— 这是<em>研究设计</em>问题，不是<em>计算</em>问题。</p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="二因果推断的基本问题" class="title-slide slide level1 center" data-background-color="#003153">
+<h1>二、因果推断的基本问题</h1>
+
+</section>
+<section id="为什么因果推断难" class="slide level2">
+<h2>为什么因果推断难？</h2>
+<p><strong>问题：健身房锻炼能减重吗？</strong></p>
+<div class="fragment">
+<p>你比较了两组人：</p>
+<ul>
+<li>每周去健身房 ≥3 次的人，平均 BMI = 23</li>
+<li>从不去健身房的人，平均 BMI = 26</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="warning-box">
+<p><strong>这个比较说明了什么？</strong></p>
+<p>什么都说明不了——或者说得更准确：<em>它不能告诉我们健身是否有效</em>。</p>
+<p>去健身房的人在饮食、动机、基础健康等方面本来就与不去的人不同。 这就是<em>选择偏差</em>（Selection Bias）。</p>
+</div>
+</div>
+</section>
+<section id="潜在结果框架" class="slide level2">
+<h2>潜在结果框架</h2>
+<div class="concept-box">
+<p><strong>潜在结果（Potential Outcomes）</strong></p>
+<p>设个体 <span class="math inline">i</span> 的处理状态为 <span class="math inline">D_i \in \{0, 1\}</span>，定义：</p>
+<ul>
+<li><span class="math inline">Y_i(1)</span>：<em>如果</em> 个体 <span class="math inline">i</span> 接受处理，其结果</li>
+<li><span class="math inline">Y_i(0)</span>：<em>如果</em> 个体 <span class="math inline">i</span> 未接受处理，其结果</li>
+</ul>
+<p>观测到的结果为：<span class="math inline">Y_i = D_i \cdot Y_i(1) + (1-D_i) \cdot Y_i(0)</span></p>
+</div>
+<div class="fragment">
+<p><strong>因果推断的基本问题（Fundamental Problem of Causal Inference）</strong></p>
+<p>对任意个体 <span class="math inline">i</span>，我们只能观测到 <span class="math inline">Y_i(1)</span> 或 <span class="math inline">Y_i(0)</span> 中的一个， 永远无法同时观测两者。</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\underbrace{Y_i(1) - Y_i(0)}_{\text{个体处理效应}} \quad \text{永远无法直接计算}</span></p>
+</div>
+</section>
+<section id="平均处理效应" class="slide level2">
+<h2>平均处理效应</h2>
+<p>研究者关注的是<em>平均</em>效应，而非个体效应：</p>
+<p><span class="math display">\text{ATE} = \tau = E[Y_i(1) - Y_i(0)]</span></p>
+<div class="fragment">
+<div class="concept-box">
+<p><strong>为什么不直接用均值差？</strong></p>
+<p><span class="math display">\underbrace{E[Y_i | D_i=1] - E[Y_i | D_i=0]}_{\text{观测到的均值差}} = \underbrace{\tau}_{\text{ATE}} + \underbrace{E[Y_i(0)|D_i=1] - E[Y_i(0)|D_i=0]}_{\text{选择偏差}}</span></p>
+</div>
+</div>
+<div class="fragment">
+<p><em>选择偏差</em>不为零，当且仅当处理组和控制组的<em>潜在结果</em>本来就不同—— 而这几乎是所有非随机数据的常态。</p>
+</div>
+</section>
+<section id="选择偏差的直觉用-python-模拟" class="slide level2">
+<h2>选择偏差的直觉：用 Python 模拟</h2>
+<div id="e1bd1b92" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="" aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="" aria-label="3"></a></span>
+<span id="cb1-4"><a href="" aria-label="4"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb1-5"><a href="" aria-label="5"></a>n <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb1-6"><a href="" aria-label="6"></a></span>
+<span id="cb1-7"><a href="" aria-label="7"></a><span class="co"># 潜在结果由"健康意识"驱动</span></span>
+<span id="cb1-8"><a href="" aria-label="8"></a>health_motive <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, n)          <span class="co"># 越高越健康</span></span>
+<span id="cb1-9"><a href="" aria-label="9"></a>gym <span class="op">=</span> (health_motive <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.5</span>, n)) <span class="op">&gt;</span> <span class="fl">0.5</span>  <span class="co"># 健康的人更去健身</span></span>
+<span id="cb1-10"><a href="" aria-label="10"></a>y0 <span class="op">=</span> <span class="dv">25</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> health_motive <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, n)    <span class="co"># BMI：意识越强越低</span></span>
+<span id="cb1-11"><a href="" aria-label="11"></a>y1 <span class="op">=</span> y0 <span class="op">-</span> <span class="fl">1.0</span>                                               <span class="co"># 真实效应：健身减少 1 个 BMI 单位</span></span>
+<span id="cb1-12"><a href="" aria-label="12"></a></span>
+<span id="cb1-13"><a href="" aria-label="13"></a>y_obs <span class="op">=</span> np.where(gym, y1, y0)  <span class="co"># 观测值</span></span>
+<span id="cb1-14"><a href="" aria-label="14"></a></span>
+<span id="cb1-15"><a href="" aria-label="15"></a>naive <span class="op">=</span> y_obs[gym].mean() <span class="op">-</span> y_obs[<span class="op">~</span>gym].mean()</span>
+<span id="cb1-16"><a href="" aria-label="16"></a><span class="bu">print</span>(<span class="ss">f"真实 ATE = </span><span class="sc">{</span>(y1 <span class="op">-</span> y0)<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb1-17"><a href="" aria-label="17"></a><span class="bu">print</span>(<span class="ss">f"朴素均值差 = </span><span class="sc">{</span>naive<span class="sc">:.2f}</span><span class="ss">  ← 选择偏差拉大了估计量"</span>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>真实 ATE = -1.00
+朴素均值差 = -4.00  ← 选择偏差拉大了估计量</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><em>朴素比较</em>高估了效应，因为去健身的人本来就更健康——选择偏差为负。</p>
+</div>
+</section>
+<section id="随机实验如何解决这一问题" class="slide level2">
+<h2>随机实验如何解决这一问题</h2>
+<div class="concept-box">
+<p><strong>随机化的作用</strong></p>
+<p>若 <span class="math inline">D_i</span> 随机分配，则：</p>
+<p><span class="math display">E[Y_i(0) | D_i=1] = E[Y_i(0) | D_i=0]</span></p>
+<p>选择偏差 = 0，均值差即为 ATE。</p>
+</div>
+<div class="fragment">
+<p><strong>Card &amp; Krueger (1994) ——自然实验的经典</strong></p>
+<p>1992 年新泽西州提高最低工资，宾夕法尼亚州不变。 两州快餐就业<em>变化量</em>的差即为最低工资效应的识别。</p>
+</div>
+<div class="fragment">
+<div class="example-box">
+<p><strong>核心思想</strong></p>
+<p>不比较两组的<em>水平值</em>（会有选择偏差）， 而比较两组的<em>变化量</em>（差分法，差消基线差异）。</p>
+</div>
+</div>
+</section>
+<section id="识别的核心逻辑" class="slide level2">
+<h2>识别的核心逻辑</h2>
+<div class="concept-box">
+<p><strong>识别策略（Identification Strategy）</strong></p>
+<p>用数据论证“在我们的设定下，观测均值差 ≈ 因果效应”的论证路径。</p>
+<p>每一个可信的因果研究，都必须明确回答： <em>为什么选择偏差在这里为零或可忽略？</em></p>
+</div>
+<div class="fragment">
+<p>本课程四种核心识别工具：</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">工具</th>
+<th style="text-align: left;">核心假设</th>
+<th style="text-align: left;">典型场景</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><em>RCT</em></td>
+<td style="text-align: left;">随机化</td>
+<td style="text-align: left;">田野实验、医药试验</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>DID</em></td>
+<td style="text-align: left;">平行趋势</td>
+<td style="text-align: left;">政策分组 × 时间</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>IV/2SLS</em></td>
+<td style="text-align: left;">排他性限制</td>
+<td style="text-align: left;">工具变量研究</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>RD</em></td>
+<td style="text-align: left;">连续性假设</td>
+<td style="text-align: left;">阈值规则</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section></section>
+<section>
+<section id="三研究设计工具箱" class="title-slide slide level1 center" data-background-color="#003153">
+<h1>三、研究设计工具箱</h1>
+
+</section>
+<section id="从-rct-到自然实验的谱系" class="slide level2">
+<h2>从 RCT 到自然实验的谱系</h2>
+<div class="intro-mermaid">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="diagrams/W1/rct_spectrum.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div class="fragment">
+<p>越向右，<em>识别假设</em>越强、越需要论证，但<em>研究问题</em>的范围越广。</p>
+</div>
+</section>
+<section id="双重差分法did预览" class="slide level2">
+<h2>双重差分法（DID）预览</h2>
+<div class="concept-box">
+<p><strong>双重差分法（Difference-in-Differences, DiD）</strong></p>
+<p><span class="math display">\hat{\tau}_{DID} = \underbrace{(\bar{Y}_{T,\text{post}} - \bar{Y}_{T,\text{pre}})}_{\text{处理组变化}} - \underbrace{(\bar{Y}_{C,\text{post}} - \bar{Y}_{C,\text{pre}})}_{\text{控制组变化}}</span></p>
+<p><em>核心假设</em>：若无处理，处理组与控制组的变化趋势相同（平行趋势）。</p>
+</div>
+<div class="fragment">
+<p><strong>第 3 周将深入讲解：</strong></p>
+<ul>
+<li>交错处理时序下 TWFE 的缺陷</li>
+<li>Callaway-Sant’Anna 估计量</li>
+<li>事件研究图与预趋势检验</li>
+</ul>
+</div>
+</section>
+<section id="工具变量法iv预览" class="slide level2">
+<h2>工具变量法（IV）预览</h2>
+<p><strong>问题：</strong>如果 <span class="math inline">D_i</span> 是内生的（与 <span class="math inline">\varepsilon_i</span> 相关），OLS 有偏。</p>
+<div class="fragment">
+<div class="concept-box">
+<p><strong>工具变量（Instrumental Variable, IV）</strong></p>
+<p>寻找变量 <span class="math inline">Z_i</span>，满足：</p>
+<ul>
+<li><em>相关性</em>：<span class="math inline">Z_i</span> 与 <span class="math inline">D_i</span> 高度相关</li>
+<li><em>排他性</em>：<span class="math inline">Z_i</span> 只通过 <span class="math inline">D_i</span> 影响 <span class="math inline">Y_i</span>，不直接影响</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<p><strong>经典例子：</strong> Angrist (1990) 用越战服役抽签号码作为工具变量， 识别服兵役对收入的因果效应。</p>
+</div>
+</section>
+<section id="断点回归法rd预览" class="slide level2">
+<h2>断点回归法（RD）预览</h2>
+<p><strong>思想：</strong>在某一阈值两侧，个体“几乎一样”—— 阈值处的结果跳跃即为处理效应。</p>
+<div class="fragment">
+<div class="example-box">
+<p><strong>Angrist &amp; Lavy (1999)：Maimonides 规则</strong></p>
+<p>以色列法规：班级人数超过 40 人则分班。 39 人的班 vs 40 人的班——<em>几乎一样</em>，但班级规模突变。 这个班级规模变化对学生成绩的影响可被识别。</p>
+</div>
+</div>
+<div class="fragment">
+<p><em>核心假设</em>：潜在结果在阈值处连续（无人操纵分班阈值）。</p>
+</div>
+</section>
+<section id="本课程的识别策略地图" class="slide level2">
+<h2>本课程的识别策略地图</h2>
+<div class="intro-mermaid">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="diagrams/W1/identification_strategy_map.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</section></section>
+<section>
+<section id="四ai-时代的实证研究格局" class="title-slide slide level1 center" data-background-color="#003153">
+<h1>四、AI 时代的实证研究格局</h1>
+
+</section>
+<section id="ai-扩展了研究的可行边界" class="slide level2">
+<h2>AI 扩展了研究的可行边界</h2>
+<p><strong>以前受制于数据规模的研究问题，现在可以做了：</strong></p>
+<div class="fragment">
+<div class="example-box">
+<p><strong>Fang, Li &amp; Lu (2025) ——解码中国产业政策</strong></p>
+<p>用 LLM 从数百万份政府文件中提取结构化政策信息， 构建覆盖 1990–2020 年的细粒度产业政策数据库—— 这在人工编码时代根本不可行。</p>
+</div>
+</div>
+<div class="fragment">
+<div class="concept-box">
+<p><strong>Ludwig, Mullainathan &amp; Rambachan (2025)</strong></p>
+<p>提出 LLM 作为计量经济学工具的统一框架， 区分<em>预测</em>与<em>估计</em>，强调需要人工标注的验证样本。</p>
+</div>
+</div>
+</section>
+<section id="文献综述自动化" class="slide level2">
+<h2>文献综述自动化</h2>
+<p>传统流程：搜索 → 阅读摘要 → 人工筛选 → 全文阅读</p>
+<div class="fragment">
+<div class="concept-box">
+<p><strong>AI 增强流程：</strong></p>
+<ol type="1">
+<li>语义搜索（Semantic Search）批量筛选相关文献</li>
+<li>LLM 提取每篇论文的研究问题 / 方法 / 结论</li>
+<li>研究者审阅 LLM 摘要，决定哪些值得精读</li>
+<li>Zotero + Claude Code 管理引用数据库</li>
+</ol>
+</div>
+</div>
+<div class="fragment">
+<div class="warning-box">
+<p><strong>风险：幻觉引用</strong></p>
+<p>LLM 可以自信地生成<em>从未存在</em>的论文标题和作者。 <em>每一条引用必须在原始数据库中验证</em>——这是不可外包的。</p>
+</div>
+</div>
+</section>
+<section id="ai-辅助编码与复现" class="slide level2">
+<h2>AI 辅助编码与复现</h2>
+<div class="concept-box">
+<p><strong>Copilot 辅助的典型工作流</strong></p>
+<ol type="1">
+<li>研究者描述需求（自然语言）</li>
+<li>Copilot 生成 Stata/Python 代码草稿</li>
+<li>研究者<em>阅读并理解</em>每一行代码</li>
+<li>运行 → 查看结果 → 验证是否合理</li>
+<li>写简短审计备注：接受了什么 / 改了什么 / 为什么</li>
+</ol>
+</div>
+<div class="fragment">
+<p><strong>判断代码是否正确的责任永远在研究者身上。</strong></p>
+<p>“AI 写的代码，所以我不确定对不对”——这不是学术免责声明。</p>
+</div>
+</section>
+<section id="llm-作为实证测量工具" class="slide level2">
+<h2>LLM 作为实证测量工具</h2>
+<p><strong>核心问题：</strong> LLM 标注的文本变量，能用于下游因果分析吗？</p>
+<div class="fragment">
+<div class="example-box">
+<p><strong>三层效度问题</strong></p>
+<ul>
+<li><em>构念效度</em>：提示词真的测量了你想测的概念吗？</li>
+<li><em>标注可靠性</em>：不同提示、不同时间，标注稳定吗？</li>
+<li><em>下游推断偏差</em>：用 LLM 测量值做回归，估计量有偏吗？</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>Ludwig et al.&nbsp;(2025) 的结论：LLM 测量值 + 人工验证样本 + 误差修正， 可以产生有效的下游推断——但必须<em>设计</em>这个验证流程。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="信任但验证本课程的-ai-使用原则" class="slide level2">
+<h2>信任但验证：本课程的 AI 使用原则</h2>
+<div class="concept-box">
+<p><strong>AI 使用审计日志模板</strong></p>
+<p>每次提交中，AI 使用的记录必须包含：</p>
+<ul>
+<li><em>工具</em>：Copilot / Claude / Cursor /DeepSeek /…</li>
+<li><em>任务</em>：代码生成 / 文献筛选 / 文本标注 / …</li>
+<li><em>接受的输出</em>：具体说明接受了什么（附例子）</li>
+<li><em>拒绝或修改的输出</em>：附修改说明</li>
+<li><em>验证方式</em>：如何确认最终结果是正确的</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>这不是额外负担——这是现代研究的可重复性标准。</strong></p>
+</div>
+</section>
+<section id="ai-的边界在哪里" class="slide level2">
+<h2>AI 的边界在哪里？</h2>
+<div class="intro-mermaid">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="diagrams/W1/ai_researcher_boundary.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</section></section>
+<section>
+<section id="本讲要点" class="title-slide slide level1 center" data-background-color="#003153">
+<h1>本讲要点</h1>
+
+</section>
+<section id="本讲要点一" class="slide level2">
+<h2>本讲要点（一）</h2>
+<div class="concept-box">
+<ol type="1">
+<li><em>AI 改变了可行研究的边界</em>
+<ul>
+<li>规模扩大：文献、测量、代码生成均可辅助</li>
+<li>但因果逻辑不能外包</li>
+</ul></li>
+<li><em>三类实证问题需要不同工具</em>
+<ul>
+<li>描述性：代表性 + 测量精度</li>
+<li>因果：识别策略（外生变异）</li>
+<li>反事实：结构模型（机制）</li>
+</ul></li>
+<li><em>因果推断的核心障碍是选择偏差</em>
+<ul>
+<li>潜在结果框架：<span class="math inline">Y_i(1), Y_i(0)</span> 只能观测一个</li>
+<li>识别 = 论证“选择偏差为零或可忽略”</li>
+</ul></li>
+</ol>
+</div>
+</section>
+<section id="本讲要点二" class="slide level2">
+<h2>本讲要点（二）</h2>
+<div class="concept-box">
+<ol start="4" type="1">
+<li><em>四种识别策略的逻辑</em>
+<ul>
+<li>RCT：随机化消除选择偏差</li>
+<li>DID：差消基线差异，假设平行趋势</li>
+<li>IV：用外生变量作为处理的“代理随机性”</li>
+<li>RD：阈值两侧近似随机分配</li>
+</ul></li>
+<li><em>信任但验证是 AI 使用的核心原则</em>
+<ul>
+<li>每次使用留下审计日志</li>
+<li>引用验证、代码阅读、结果检查——不可外包</li>
+<li>虚假自信风险比不用 AI 更危险</li>
+</ul></li>
+</ol>
+</div>
+</section>
+<section id="下节课预告" class="slide level2">
+<h2>下节课预告</h2>
+<p><strong>第 2 周：计算基础与 AI 辅助可重复工作流</strong></p>
+<ul>
+<li>VS Code + Python + Stata/R 环境搭建</li>
+<li>Jupyter notebook 的结构化使用习惯</li>
+<li>Monte Carlo 模拟：用代码建立直觉</li>
+<li>“信任但验证”工作流的第一次实践</li>
+</ul>
+<div class="fragment">
+<div class="concept-box">
+<p><em>善意提醒</em></p>
+<p>在第 3–8 周做任何实证分析之前， 先建立你的<strong>代码环境</strong>和<strong>验证习惯</strong>—— 这是可重复研究的基础设施。</p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="参考文献" class="title-slide slide level1 center">
+<h1>参考文献</h1>
+<ul>
+<li>Angrist, J. D., &amp; Lavy, V. (1999). Using Maimonides’ rule to estimate the effect of class size on scholastic achievement. <em>Quarterly Journal of Economics</em>, 114(2), 533–575.</li>
+<li>Abadie, A., &amp; Cattaneo, M. D. (2018). Econometric methods for program evaluation. <em>Annual Review of Economics</em>, 10, 465–503.</li>
+<li>Card, D., &amp; Krueger, A. B. (1994). Minimum wages and employment: A case study of the fast-food industry in New Jersey and Pennsylvania. <em>American Economic Review</em>, 84(4), 772–793.</li>
+<li>Chernozhukov, V., et al.&nbsp;(2024). <em>Applied causal inference powered by ML and AI</em>. arXiv: 2403.02467.</li>
+<li>Fang, H., Li, Z., &amp; Lu, Y. (2025). <em>Decoding China’s industrial policies</em>. NBER Working Paper 33814.</li>
+<li>Ludwig, J., Mullainathan, S., &amp; Rambachan, A. (2025). <em>Large language models: An applied econometric framework</em>. NBER Working Paper 33344.</li>
+<li>Rubin, D. B. (1974). Estimating causal effects of treatments in randomized and nonrandomized studies. <em>Journal of Educational Psychology</em>, 66(5), 688–701.</li>
+</ul>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="W1_AI_Era_Empirical_Research_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="W1_AI_Era_Empirical_Research_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1400,
+
+        height: 788,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "已复制");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "已复制");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

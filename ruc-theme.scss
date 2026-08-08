@@ -1,0 +1,1123 @@
+/*-- scss:defaults --*/
+
+// RMEB Color Palette — Prussian Blue + Cyan
+$ruc-red: #003153;    // Prussian Blue (replaces RUC red as primary)
+$ruc-gold: #00A8CC;   // Cyan Blue (replaces gold as accent)
+$dark-blue: #003153;  // Same as primary
+$light-bg: #FAF8F5;
+$text-dark: #333333;
+
+// Primary colors
+$primary: $ruc-red;
+$secondary: $ruc-gold;
+$body-bg: #ffffff;
+$body-color: $text-dark;
+
+// Font Settings - Optimized for readability
+$font-family-sans-serif: "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
+$font-family-monospace: "Source Code Pro", "Fira Code", Consolas, monospace;
+
+// Font Sizes - Reduced for better content fit
+$presentation-font-size-root: 26px;                    // Base font size for better single-slide fit
+$presentation-font-size-smaller: 0.75rem;              // Smaller text
+$presentation-line-height: 1.32;                       // Tighter line spacing
+
+// Headings
+$presentation-heading-font: $font-family-sans-serif;
+$presentation-heading-color: $ruc-red;
+$presentation-heading-font-weight: 600;
+$presentation-h1-font-size: 1.6em;                     // Main titles
+$presentation-h2-font-size: 1.35em;                    // Section titles
+$presentation-h3-font-size: 1.1em;                     // Subsection titles
+$presentation-h4-font-size: 1.1em;                     // Small headings
+
+// Code blocks
+$code-block-bg: #f5f5f5;
+$code-block-border-color: $ruc-gold;
+
+/*-- scss:rules --*/
+
+// Base slide font adjustments
+.reveal {
+  font-size: $presentation-font-size-root;
+  line-height: $presentation-line-height;
+}
+
+// Custom title slide
+.reveal .title-slide {
+  background: linear-gradient(135deg, $ruc-red 0%, darken($ruc-red, 15%) 100%);
+  color: white;
+
+  h1 {
+    color: white;
+    font-size: 2.2em;           // Slightly reduced
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 0.3em;
+  }
+
+  h2 {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.3em;           // Reduced
+    font-weight: 400;
+    margin-bottom: 0.5em;
+  }
+
+  .author {
+    color: white;
+    font-size: 1em;             // Reduced
+    margin-bottom: 0.3em;
+  }
+
+  .institute {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9em;           // Reduced
+  }
+
+  .date {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85em;          // Reduced
+  }
+}
+
+// Regular slide headings
+.reveal h1 {
+  font-size: $presentation-h1-font-size;
+  margin-bottom: 0.28em;
+}
+
+.reveal h2 {
+  font-size: $presentation-h2-font-size;
+  margin-bottom: 0.24em;
+}
+
+.reveal h3 {
+  font-size: $presentation-h3-font-size;
+  margin-bottom: 0.3em;
+}
+
+.reveal p, .reveal li {
+  font-size: 1em;
+  line-height: 1.35;
+  margin-bottom: 0.24em;
+}
+
+// Section slides
+.reveal .section-slide {
+  background: $ruc-red;
+  color: white;
+
+  h1, h2 {
+    color: white;
+  }
+}
+
+// Custom boxes - Compact styling
+.reveal .concept-box {
+  background: lighten($dark-blue, 70%);
+  border-left: 4px solid $dark-blue;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.95em;
+
+  strong:first-child,
+  b:first-child {
+    color: $dark-blue;
+    font-weight: 600;
+    font-size: 1.05em;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 0.3em;
+  }
+
+  ul, ol {
+    margin: 8px 0;
+  }
+}
+
+// Research mission box
+.reveal .research-mission {
+  background: linear-gradient(135deg, rgba(0, 49, 83, 0.08) 0%, rgba(0, 168, 204, 0.08) 100%);
+  border-left: 5px solid $ruc-red;
+  border-right: 1px solid rgba($ruc-red, 0.3);
+  padding: 16px 18px;
+  margin: 12px 0;
+  border-radius: 8px;
+  font-size: 0.98em;
+  line-height: 1.6;
+
+  strong:first-child,
+  b:first-child {
+    color: $ruc-red;
+    font-weight: 700;
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  blockquote {
+    margin: 0;
+    padding-left: 0;
+    border-left: 0;
+    color: $ruc-red;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.05em;
+    line-height: 1.8;
+  }
+
+  p {
+    margin: 8px 0;
+  }
+}.reveal .example-box {
+  background: lighten($ruc-gold, 50%);
+  border-left: 4px solid $ruc-gold;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.95em;
+
+  strong:first-child,
+  b:first-child {
+    color: darken($ruc-gold, 20%);
+    font-weight: 600;
+    font-size: 1.05em;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 0.3em;
+  }
+}
+
+.reveal .warning-box {
+  background: #e6f0ff;
+  border-left: 4px solid $ruc-red;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.95em;
+
+  strong:first-child,
+  b:first-child {
+    color: $ruc-red;
+    font-weight: 600;
+    font-size: 1.05em;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 0.3em;
+  }
+}
+
+// Code styling - Compact
+.reveal pre {
+  background: $code-block-bg;
+  border: 1px solid $code-block-border-color;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 0.7em;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+
+.reveal code {
+  color: $ruc-red;
+  background: rgba($ruc-red, 0.1);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: $font-family-monospace;
+  font-size: 0.9em;
+}
+
+.reveal pre code {
+  color: $text-dark;
+  background: transparent;
+  padding: 0;
+}
+
+// Source code blocks
+.reveal div.sourceCode {
+  margin: 10px 0;
+}
+
+.reveal div.sourceCode pre {
+  margin: 0;
+}
+
+// Tables - Compact and professional
+.reveal table {
+  border-collapse: collapse;
+  margin: 10px auto;
+  font-size: 1.0em;
+  width: 80%;
+  max-width: 80%;
+}
+
+.reveal table th {
+  background: $ruc-red;
+  color: white;
+  padding: 6px 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.reveal table th p,
+.reveal table th span,
+.reveal table th strong,
+.reveal table th em,
+.reveal table th a,
+.reveal table th code {
+  color: inherit;
+}
+
+.reveal table th .math,
+.reveal table th .katex,
+.reveal table th .math .katex {
+  color: white;
+}
+
+.reveal table td {
+  border-bottom: 1px solid #ddd;
+  padding: 4px 6px;
+  text-align: center;
+}
+
+.reveal table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.reveal table tr:hover {
+  background: #f0f0f0;
+}
+
+// Large figures and diagrams
+.reveal .cell-output-display {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.reveal .cell-output-display img {
+  max-width: 90%;
+  max-height: 450px;
+  height: auto;
+}
+
+.reveal .cell-output-display svg {
+  max-width: 100%;
+  height: auto;
+}
+
+// Mermaid diagrams
+// 1) Hide echoed source code for Mermaid cells when a rendered diagram is present.
+// 2) Let the rendered figure use the full slide width.
+.reveal .cell:has(pre.mermaid),
+.reveal .cell:has(svg.mermaid-js) {
+  width: 100%;
+}
+
+.reveal .cell:has(pre.mermaid) > .code-copy-outer-scaffold,
+.reveal .cell:has(svg.mermaid-js) > .code-copy-outer-scaffold {
+  display: none !important;
+}
+
+.reveal .cell:has(pre.mermaid) > .cell-output-display,
+.reveal .cell:has(svg.mermaid-js) > .cell-output-display,
+.reveal .mermaid {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.reveal .cell-output-display pre.mermaid,
+.reveal .cell-output-display svg.mermaid-js,
+.reveal .mermaid pre.mermaid,
+.reveal .mermaid svg.mermaid-js {
+  width: 96% !important;
+  max-width: 96% !important;
+  height: auto !important;
+  max-height: none;
+  text-rendering: geometricPrecision;
+  shape-rendering: geometricPrecision;
+}
+
+.reveal .cell-output-display figure,
+.reveal .cell-output-display .quarto-figure,
+.reveal .cell-output-display > div {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto;
+}
+
+.reveal .intro-mermaid {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.reveal .intro-mermaid svg.mermaid-js {
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: 78vh;
+  margin: 0 auto 6px auto;
+}
+
+.reveal svg.mermaid-js text,
+.reveal svg.mermaid-js tspan,
+.reveal svg.mermaid-js foreignObject div {
+  font-family: $font-family-sans-serif !important;
+  font-weight: 600;
+}
+
+.reveal svg.mermaid-js .nodeLabel,
+.reveal svg.mermaid-js .edgeLabel,
+.reveal svg.mermaid-js .cluster-label text,
+.reveal svg.mermaid-js .messageText {
+  font-size: 28px !important;
+}
+
+// Direct image styling — use max-width/max-height only (no forced width)
+// so the browser can maintain aspect ratio under both constraints
+.reveal p img {
+  max-width: 85%;
+  max-height: 65vh;
+  width: auto !important;   // Override Quarto inline style="width:85%"
+  height: auto !important;
+  display: block;
+  margin: 15px auto;
+}
+
+// Lists - Compact
+.reveal ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 8px 0;
+}
+
+.reveal ul li {
+  position: relative;
+  padding-left: 20px;
+  margin: 6px 0;
+  font-size: 0.95em;
+}
+
+.reveal ul li::before {
+  content: "▸";
+  color: $ruc-red;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.reveal ol {
+  margin: 8px 0;
+  padding-left: 25px;
+}
+
+.reveal ol li {
+  margin: 6px 0;
+  font-size: 0.95em;
+}
+
+// Nested lists
+.reveal li > ul,
+.reveal li > ol {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+// ===== Math Formula Styling (Multiple Styles Available) =====
+
+/**
+ * USAGE GUIDE:
+ * 1. Default: Just use $...$ or $$...$$
+ * 2. Custom: Wrap in :::{class="math-STYLE"} for display math
+ *    Examples: math-serif, math-display, math-muted, math-highlight, math-modern
+ *
+ * For inline math: $\text{formula}$
+ * For display math in custom style:
+ *   :::{.math-serif}
+ *   $$formula$$
+ *   :::
+ */
+
+// Base math styling
+.reveal .math {
+  color: $text-dark;
+}
+
+// KaTeX-specific styling for better rendering
+.reveal .katex {
+  font-size: 1.05em;
+  vertical-align: middle;
+}
+
+.reveal .katex-display {
+  margin: 0.2em 0;
+  text-align: center;
+}
+
+// ===== Style 1: Modern (Default) =====
+// Clean, sans-serif, contemporary
+.reveal .math-modern,
+.reveal .math {
+  .katex {
+    color: $text-dark;
+  }
+
+  .katex-display {
+    font-size: 1.1em;
+  }
+}
+
+// ===== Style 2: Serif (Classic) =====
+// Traditional, formal appearance - good for equations
+.reveal .math-serif {
+  .katex {
+    color: darken($text-dark, 10%);
+  }
+
+  .katex-display {
+    font-size: 1.15em;
+    font-weight: 500;
+  }
+}
+
+// ===== Style 3: Display (Large & Clear) =====
+// Larger font, emphasizing the formula
+.reveal .math-display {
+  .katex {
+    font-size: 1.3em;
+    color: $ruc-red;
+    font-weight: 600;
+  }
+
+  .katex-display {
+    font-size: 1.4em;
+    margin: 0.3em 0;
+    background: rgba($ruc-red, 0.05);
+    padding: 12px 16px;
+    border-left: 4px solid $ruc-red;
+    border-radius: 4px;
+  }
+}
+
+// ===== Style 4: Muted (Subtle) =====
+// Lighter color, for supplementary equations
+.reveal .math-muted {
+  .katex {
+    color: #888888;
+    font-size: 0.95em;
+  }
+
+  .katex-display {
+    opacity: 0.85;
+    font-size: 1em;
+  }
+}
+
+// ===== Style 5: Highlight (Emphasized) =====
+// Bold with accent color, for key equations
+.reveal .math-highlight {
+  .katex {
+    color: $ruc-red;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: $ruc-gold;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .katex-display {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: $ruc-red;
+    background: rgba($ruc-red, 0.08);
+    padding: 14px 18px;
+    border: 2px solid $ruc-red;
+    border-radius: 6px;
+    margin: 0.3em 0;
+  }
+}
+
+// ===== Style 6: Minimal (Compact) =====
+// Smaller, for fitting more content
+.reveal .math-minimal {
+  .katex {
+    font-size: 0.9em;
+    color: #555555;
+  }
+
+  .katex-display {
+    font-size: 0.95em;
+    margin: 0.15em 0;
+  }
+}
+
+// ===== Style 7: Accent (Gold theme) =====
+// Using RUC gold color for variation
+.reveal .math-accent {
+  .katex {
+    color: $ruc-gold;
+    font-weight: 500;
+  }
+
+  .katex-display {
+    font-size: 1.2em;
+    background: rgba($ruc-gold, 0.1);
+    padding: 10px 14px;
+    border-left: 3px solid $ruc-gold;
+    border-radius: 3px;
+    margin: 0.25em 0;
+  }
+}
+
+// ===== Style 8: Fancy (Stylized) =====
+// With subtle shadows and styling
+.reveal .math-fancy {
+  .katex {
+    color: $text-dark;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .katex-display {
+    font-size: 1.2em;
+    background: linear-gradient(135deg, rgba($ruc-red, 0.05) 0%, rgba($ruc-gold, 0.05) 100%);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 0.3em 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// Callouts - Compact
+.reveal .callout {
+  border-radius: 6px;
+  margin: 12px 0;
+  font-size: 0.9em;
+
+  .callout-header {
+    padding: 8px 12px;
+    font-size: 0.95em;
+  }
+
+  .callout-body {
+    padding: 10px 12px;
+  }
+
+  &.callout-note {
+    border-left-color: $dark-blue;
+    background: lighten($dark-blue, 75%);
+  }
+
+  &.callout-warning {
+    border-left-color: $ruc-red;
+    background: #e6f0ff;
+  }
+
+  &.callout-tip {
+    border-left-color: $ruc-gold;
+    background: lighten($ruc-gold, 50%);
+  }
+}
+
+// Progress bar
+.reveal .progress {
+  background: rgba($ruc-red, 0.2);
+  height: 4px;
+}
+
+.reveal .progress span {
+  background: $ruc-red;
+}
+
+// Slide numbers
+.reveal .slide-number {
+  background: $ruc-red;
+  color: white;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+// Slide content area optimization
+.reveal .slides {
+  padding: 0 10px;
+}
+
+.reveal .slides > section {
+  padding: 14px 22px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+// Two-column layout - tighter spacing
+.reveal .columns {
+  display: flex;
+  gap: 18px;
+  margin: 6px 0;
+}
+
+.reveal .column {
+  flex: 1;
+  min-width: 0; // Prevent overflow
+}
+
+// Compact text utilities
+.reveal .smaller {
+  font-size: 0.85em;
+}
+
+.reveal .smallest {
+  font-size: 0.75em;
+}
+
+.reveal .center {
+  text-align: center;
+}
+
+// Fragment animations
+.reveal .fragment {
+  transition: all 0.3s ease;
+}
+
+// Emphasis
+.reveal strong {
+  color: $ruc-red;
+  font-weight: 600;
+}
+
+.reveal em {
+  color: $ruc-gold;
+  font-style: italic;
+}
+
+// Blockquotes
+.reveal blockquote {
+  border-left: 5px solid $ruc-gold;
+  background: #f9f9f9;
+  padding: 15px 20px;
+  margin: 20px 0;
+  font-style: italic;
+  color: #555;
+}
+
+// Blockquotes
+.reveal blockquote {
+  border-left: 4px solid $ruc-gold;
+  background: #f9f9f9;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-style: italic;
+  color: #555;
+  font-size: 0.9em;
+}
+
+// Image styling - Larger figures, preserve aspect ratio
+.reveal img {
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  max-width: 85%;
+  max-height: 65vh;
+  width: auto !important;   // Override Quarto inline style="width:XX%"
+  height: auto !important;  // Maintain aspect ratio
+  display: block;
+  margin: 15px auto;
+}
+
+// Large figure utility class
+.reveal .large-figure img {
+  max-width: 95%;
+  max-height: 520px;
+}
+
+.reveal .full-figure img {
+  max-width: 100%;
+  max-height: 580px;
+}
+
+// Footer
+.reveal .slide-footer {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: 0.6em;
+  color: #999;
+}
+
+// Print styles
+@media print {
+  .reveal .title-slide {
+    background: $ruc-red !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+// ===== Observable JS Interactive Elements =====
+
+// Input controls container
+.reveal .observablehq-input {
+  margin: 8px 0;
+
+  label {
+    font-size: 0.9em;
+    color: $text-dark;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, lighten($ruc-red, 40%), $ruc-red);
+    border-radius: 3px;
+    outline: none;
+    margin: 8px 0;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      background: $ruc-red;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: transform 0.1s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      background: $ruc-red;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+  }
+}
+
+// Observable outputs
+.reveal .observablehq-output {
+  font-size: 0.95em;
+
+  table {
+    font-size: 0.9em;
+    margin: 10px 0;
+
+    td, th {
+      padding: 6px 10px;
+    }
+  }
+}
+
+// Plot styling for Observable Plot
+.reveal .observablehq svg {
+  max-width: 100%;
+  height: auto;
+}
+
+// Code output styling
+.reveal .cell-output {
+  margin: 10px 0;
+  font-size: 0.85em;
+
+  pre {
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 8px 0;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+}
+
+// Jupyter-style output
+.reveal .cell-output-display {
+  margin: 10px 0;
+  text-align: center;
+
+  img {
+    max-width: 95%;
+    max-height: 400px;
+  }
+}
+
+// Code cell styling
+.reveal .cell {
+  margin: 8px 0;
+}
+
+.reveal .cell-code {
+  font-size: 0.75em;
+
+  pre {
+    margin: 0;
+    padding: 10px 12px;
+  }
+}
+
+// Line numbers in code
+.reveal .code-line-number {
+  color: #999;
+  font-size: 0.8em;
+  margin-right: 10px;
+  user-select: none;
+}
+
+// Highlight code blocks with output
+.reveal div.sourceCode + div.cell-output,
+.reveal div.sourceCode + .cell-output-display {
+  margin-top: -5px;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+// Compact code for slides
+.reveal .smaller .sourceCode,
+.reveal .smaller pre {
+  font-size: 0.72em;
+}
+
+// Vibe coding highlight
+.reveal .vibe-code {
+  background: linear-gradient(135deg, rgba(139, 111, 78, 0.1) 0%, rgba(174, 11, 42, 0.05) 100%);
+  border-left: 4px solid $ruc-gold;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-radius: 0 6px 6px 0;
+
+  .prompt-text {
+    font-style: italic;
+    color: #666;
+    border-left: 3px solid $ruc-gold;
+    padding-left: 12px;
+    margin-bottom: 12px;
+  }
+}
+
+// Interactive panel styling
+.reveal .interactive-panel {
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin: 15px 0;
+
+  .panel-title {
+    font-weight: 600;
+    color: $ruc-red;
+    margin-bottom: 12px;
+    font-size: 1.05em;
+  }
+}
+
+// Slider container
+.reveal .slider-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0;
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border-radius: 6px;
+
+  label {
+    min-width: 150px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+
+  input[type="range"] {
+    flex: 1;
+  }
+
+  .value-display {
+    min-width: 60px;
+    text-align: right;
+    font-weight: 600;
+    color: $ruc-red;
+  }
+}
+
+// ===== Animation Control Panel Styles =====
+
+// Observable JS input controls styling
+.reveal .observablehq-input {
+  margin: 8px 0;
+  padding: 6px 10px;
+  background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+
+  label {
+    font-size: 0.88em;
+    color: $text-dark;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  // Range slider styling
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, lighten($ruc-red, 50%), $ruc-red);
+    border-radius: 4px;
+    outline: none;
+    margin: 6px 0;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: $ruc-red;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(174, 11, 42, 0.4);
+      transition: all 0.2s ease;
+      border: 2px solid white;
+
+      &:hover {
+        transform: scale(1.15);
+        box-shadow: 0 3px 8px rgba(174, 11, 42, 0.5);
+      }
+    }
+
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: $ruc-red;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 2px 6px rgba(174, 11, 42, 0.4);
+    }
+  }
+
+  // Button styling for animation controls
+  button {
+    background: linear-gradient(135deg, $ruc-red 0%, darken($ruc-red, 10%) 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(174, 11, 42, 0.3);
+    margin: 8px 0;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(174, 11, 42, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(174, 11, 42, 0.3);
+    }
+  }
+}
+
+// Stats table in interactive panels
+.reveal .observablehq-output {
+  font-size: 0.9em;
+
+  table {
+    font-size: 0.88em;
+    margin: 10px 0;
+    width: 100%;
+
+    td, th {
+      padding: 5px 8px;
+      text-align: center;
+    }
+
+    th {
+      background: $dark-blue;
+      color: white;
+      font-weight: 600;
+    }
+
+    th p,
+    th span,
+    th strong,
+    th em,
+    th a,
+    th code {
+      color: inherit;
+    }
+
+    tr:nth-child(even) {
+      background: #f8f8f8;
+    }
+  }
+}
+
+// D3.js visualization container
+.reveal .observablehq svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+// Animation highlight effect
+.reveal .animating {
+  animation: pulse-highlight 0.5s ease;
+}
+
+@keyframes pulse-highlight {
+  0% { background-color: rgba(174, 11, 42, 0.1); }
+  50% { background-color: rgba(174, 11, 42, 0.2); }
+  100% { background-color: transparent; }
+}
+
+// Parameter control panel
+.reveal .param-panel {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-left: 4px solid $ruc-red;
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 10px 0;
+
+  .panel-header {
+    font-weight: 600;
+    color: $ruc-red;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

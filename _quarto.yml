@@ -1,0 +1,12 @@
+project:
+  type: default
+
+engine: jupyter
+jupyter: venv-python3
+
+# 明确指定 Python 解释器路径 (使用 ASCII junction 路径避免编码问题)
+python: "e:/ppt_test/.venv/Scripts/python.exe"
+
+execute:
+  echo: true
+  warning: false

@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="zh-Hans"><head>
+<script src="day1_am_files/libs/clipboard/clipboard.min.js"></script>
+<script src="day1_am_files/libs/quarto-html/tabby.min.js"></script>
+<script src="day1_am_files/libs/quarto-html/popper.min.js"></script>
+<script src="day1_am_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="day1_am_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="day1_am_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="day1_am_files/libs/quarto-html/quarto-syntax-highlighting-a06763021a52c43c40a351ac8b799b8f.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
+
+  <meta name="author" content="陈志远（中国人民大学商学院贸易经济系）">
+  <meta name="dcterms.date" content="2026-07-29">
+  <title>AI 时代经济学研究工具与方法 · 基础篇</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="day1_am_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="day1_am_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="day1_am_files/libs/revealjs/dist/theme/quarto-6ad8cc1c24fdf89b72a6f71f814a247b.css">
+  <link rel="stylesheet" href="../assets/ruc-theme.scss">
+  <link href="day1_am_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="day1_am_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="day1_am_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="day1_am_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="day1_am_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="day1_am_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">AI 时代经济学研究工具与方法 · 基础篇</h1>
+  <p class="subtitle">Day 1 上午：一站式科研范式与软件环境搭建</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+陈志远（中国人民大学商学院贸易经济系） 
+</div>
+        <p class="quarto-title-affiliation">
+            江西财经大学数字经济学院
+          </p>
+    </div>
+</div>
+
+  <p class="date">2026-07-29</p>
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">目录</h2>
+<ul>
+<li><a href="#/一开源-ide-作为经济学研究工作台" id="/toc-一开源-ide-作为经济学研究工作台">一、开源 IDE 作为经济学研究工作台</a></li>
+<li><a href="#/二基础软件安装与自检" id="/toc-二基础软件安装与自检">二、基础软件安装与自检</a></li>
+<li><a href="#/三vs-code-扩展让工作台适配你的研究" id="/toc-三vs-code-扩展让工作台适配你的研究">三、VS Code 扩展：让工作台适配你的研究</a></li>
+<li><a href="#/qa" id="/toc-qa">Q&amp;A</a></li>
+</ul>
+</nav>
+</section>
+<section id="今天上午的目标" class="slide level2">
+<h2>今天上午的目标</h2>
+<div class="concept-box">
+<p><strong>讲座目标</strong></p>
+<p>今天上午不要求大家已经会编程、会 Git，甚至不要求所有软件都已经准备好。</p>
+<p>最低目标是：把电脑变成一个可以继续学习的研究工作台，知道每个工具装来解决什么问题，遇到卡点时知道如何自检。</p>
+</div>
+<aside class="notes">
+<p>先稳住本科生：没装软件不是失败，今天本来就是环境课。硕博同学也许有些工具装过，但往往散落各处——今天的价值是把它们整合到一个工作台上。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="为什么经济学研究会被工具拖慢" class="slide level2">
+<h2>为什么经济学研究会被工具拖慢？</h2>
+<p><strong>传统的碎片化研究</strong></p>
+<ul>
+<li>数据在 <code>Excel</code> 或 <code>Stata</code>; 清洗、画图和建模可能在 <code>Python</code>、<code>R</code>、<code>Matlab</code>; 正文在 <code>Word</code>、<code>Overleaf</code> 或 <code>LaTeX</code>;</li>
+<li>AI 助手在浏览器聊天窗口;</li>
+<li>版本控制停留在文件名：<code>final</code>、<code>final2</code>、<code>最终版真的最终版</code></li>
+</ul>
+<div class="fragment">
+<div class="example-box">
+<p><strong>AI 改变的是研究者的时间分配</strong></p>
+<p><img data-src="images/research_time_allocation_ai.png" style="width:100.0%" alt="AI 前后经济学研究任务时间分配对比：AI 之前选题、执行、审阅各占三分之一；AI 之后选题占 40%，执行占 10%，审阅占 50%。"></p>
+</div>
+</div>
+<div class="fragment">
+<p><strong>一站式科研的核心</strong>：不是多装一个 AI 插件，而是把研究动作组织成 AI 赋能的<strong>可重复、可检查、可交接</strong>的流水线。</p>
+</div>
+</section>
+<section id="ai-让执行变快也让审阅变重要" class="slide level2">
+<h2>AI 让执行变快，也让审阅变重要</h2>
+<div class="concept-box">
+<p><strong>新的能力结构</strong></p>
+<p>AI 最擅长压缩执行时间：读数据、写脚本、改格式、整理文献、生成初稿。</p>
+<p>但执行变快以后，真正稀缺的是研究者的判断：问题是否重要？识别是否可信？结果是否可复现？结论是否越界？</p>
+</div>
+<div class="fragment">
+<p><strong>今天上午先解决一个基础问题</strong></p>
+<p>如果工具散落在多个窗口里，研究者很难审阅 AI 到底做了什么，也不方便进行上下文管理。因此，我们先把工具放到同一个工作台上。</p>
+</div>
+</section>
+<section>
+<section id="一开源-ide-作为经济学研究工作台" class="title-slide slide level1 center" data-background-color="#003153">
+<h1>一、开源 IDE 作为经济学研究工作台</h1>
+
+</section>
+<section id="开源-ide" class="slide level2">
+<h2>开源 IDE</h2>
+<div class="concept-box">
+<p><strong>Integrated Development Environment（IDE）是什么？</strong></p>
+<p><strong>IDE（集成开发环境）</strong>将代码编辑、调试、版本控制、终端等工具整合在同一个界面中。<strong>开源 IDE</strong>（如 VS Code、JupyterLab、RStudio）具有高度可定制性和丰富插件生态，适合不同学科的研究需求。</p>
+</div>
+<div class="fragment">
+<p><strong>开源 IDE 的角色</strong></p>
+<ul>
+<li><p>开源 IDE 不是替代 <code>Python</code>、<code>Stata</code>、<code>R</code>、<code>Matlab</code>、<code>Jupyter</code> 或 <code>LaTeX</code></p></li>
+<li><p>它把这些工具放进同一个研究项目，让文件、终端、版本控制、笔记、AI 对话和论文写作在一处发生</p></li>
+</ul>
+</div>
+</section>
+<section id="为什么经济学研究者需要一个编程基座" class="slide level2">
+<h2>为什么经济学研究者需要一个“编程基座”？</h2>
+<p><strong>在 AI 时代，“编程”这个概念被重新定义了</strong></p>
+<ul>
+<li><p>用 Stata 写 do-file 是编程</p></li>
+<li><p>用 LaTeX 写论文是编程</p></li>
+<li><p>用 Markdown 写研究备忘录也是编程</p></li>
+<li><p>用自然语言指挥 agent 修改一个项目，也是一种编程</p></li>
+</ul>
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">区域</th>
+<th style="text-align: left;">经济学研究中的用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Explorer</td>
+<td style="text-align: left;">项目结构、数据版本、输出位置</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Editor</td>
+<td style="text-align: left;">Python、Stata do-file、Matlab、LaTeX、Markdown</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Terminal</td>
+<td style="text-align: left;">可重复运行的命令与日志</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chat</td>
+<td style="text-align: left;">Copilot、Claude Code 等 AI 助手</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Source Control</td>
+<td style="text-align: left;">记录每一次研究改动</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>可以沿用“手机操作系统”的比喻：以前每个工具都有自己的桌面，现在它们共享一个工作台。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="上手操作演示-1认识-ide-工作环境" class="slide level2" style="text-align: center;">
+<h2>上手操作演示 1：认识 IDE 工作环境</h2>
+<p><strong>以 VS Code 为例</strong></p>
+<ol type="1">
+<li><p>确认界面四个核心区域：</p>
+<ul>
+<li><strong>Explorer</strong>（文件浏览）：左侧第一个图标</li>
+<li><strong>Editor</strong>（编辑区）：中间大区域</li>
+<li><strong>Terminal</strong>（终端）：底部面板，<code>Ctrl+`</code> 打开</li>
+<li><strong>Source Control</strong>（版本控制）：左侧第三个图标</li>
+<li><strong>Copilot</strong> (AI 助手)：左侧第四个图标</li>
+</ul></li>
+<li><p>打开一个已有项目文件夹：<code>File → Open Folder</code></p></li>
+<li><p>观察文件树结构和终端提示符</p></li>
+</ol>
+<aside class="notes">
+<p>第一个检查点：现在大家电脑上至少能打开 VS Code 吗？不能打开的先举手，我们记录问题，不在这里集体卡住。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="自检-1vs-code-能打开吗" class="slide level2">
+<h2>自检 1：VS Code 能打开吗？</h2>
+<div style="font-size: 1.1em;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="co"># 终端中输入（不是 VS Code 里面，是系统的终端）</span></span>
+<span id="cb1-2"><a href=""></a><span class="ex">code</span> <span class="at">--version</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">系统</th>
+<th style="text-align: left;">如果 <code>code</code> 命令找不到</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>macOS</strong></td>
+<td style="text-align: left;">VS Code 内按 <code>Cmd+Shift+P</code> → 输入 “Shell Command: Install ‘code’ command in PATH”</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Windows</strong></td>
+<td style="text-align: left;">重装 VS Code，安装时勾选 “Add to PATH”</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Linux</strong></td>
+<td style="text-align: left;">通常 Snap 或包管理器安装后自动可用</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>如果你还没装 VS Code：<a href="https://code.visualstudio.com/" class="uri">https://code.visualstudio.com/</a> — 下载安装大约 3 分钟。</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="二基础软件安装与自检" class="title-slide slide level1 center" data-background-color="#003153">
+<h1>二、基础软件安装与自检</h1>
+
+</section>
+<section id="安装顺序先能打开再能运行" class="slide level2">
+<h2>安装顺序：先能打开，再能运行</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">顺序</th>
+<th style="text-align: left;">工具</th>
+<th style="text-align: left;">今天的作用</th>
+<th style="text-align: left;">自检方式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">VS Code</td>
+<td style="text-align: left;">统一工作台</td>
+<td style="text-align: left;"><code>code --version</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Git</td>
+<td style="text-align: left;">版本控制</td>
+<td style="text-align: left;"><code>git --version</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Python 3.10+</td>
+<td style="text-align: left;">数据、图表、脚本</td>
+<td style="text-align: left;"><code>python --version</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Jupyter</td>
+<td style="text-align: left;">Notebook 实操</td>
+<td style="text-align: left;"><code>jupyter --version</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">GitHub 账号</td>
+<td style="text-align: left;">远程备份与协作</td>
+<td style="text-align: left;">能登录 github.com</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>如果某一步暂时失败，先记录，不要脱离主线。今天的目标不是把每台电脑都配置成一样，而是让每个人知道下一步该查哪里。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="工具-1git-版本控制" class="slide level2">
+<h2>工具 1：Git —— 版本控制</h2>
+<div class="concept-box">
+<p><strong>Git 先作为本地工具理解</strong></p>
+<p>Git 不是 GitHub。Git 是你电脑上的版本控制系统，负责记录每一次改动；GitHub 是远程平台，负责同步、备份和协作。</p>
+</div>
+<div class="fragment">
+<p><strong>安装 Git</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">系统</th>
+<th style="text-align: left;">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>macOS</strong></td>
+<td style="text-align: left;">终端输入 <code>git --version</code>，未安装会弹出 Xcode Command Line Tools 安装提示，点击安装</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Windows</strong></td>
+<td style="text-align: left;">下载 <a href="https://git-scm.com/download/win" class="uri">https://git-scm.com/download/win</a>，安装时选 “Use Git from the command line”</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Linux</strong></td>
+<td style="text-align: left;"><code>sudo apt install git</code> 或 <code>sudo yum install git</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p><strong>自检 + 首次配置</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="fu">git</span> <span class="at">--version</span></span>
+<span id="cb2-2"><a href=""></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
+<span id="cb2-3"><a href=""></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"your_email@example.com"</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="git-安装常见卡点" class="slide level2">
+<h2>Git 安装常见卡点</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">问题</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">解决</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>git</code> 命令找不到</td>
+<td style="text-align: left;">Git 未安装或 PATH 未配置</td>
+<td style="text-align: left;">检查安装后是否重启了终端</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">macOS 弹出 “无法验证开发者”</td>
+<td style="text-align: left;">Gatekeeper 安全策略</td>
+<td style="text-align: left;">系统偏好设置 → 安全性与隐私 → 仍要打开</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Windows 中文乱码</td>
+<td style="text-align: left;">终端编码问题</td>
+<td style="text-align: left;">Git Bash 或 VS Code Terminal 通常无此问题</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Git 今天我们只做本地操作</strong>（记录改动、回退版本）。下午专门讲 GitHub 远程同步。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="工具-2python-3.10-与虚拟环境" class="slide level2">
+<h2>工具 2：Python 3.10+ 与虚拟环境</h2>
+<p><strong>为什么要用虚拟环境？</strong></p>
+<p>同一台电脑可能服务多个研究项目。虚拟环境让每个项目有自己的 Python 包，避免今天装的包影响明天的论文复现。</p>
+<div class="fragment">
+<p><strong>安装 Python</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">系统</th>
+<th style="text-align: left;">推荐方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>macOS</strong></td>
+<td style="text-align: left;">Homebrew：<code>brew install python@3.12</code>，或下载 Miniconda：<a href="https://docs.anaconda.com/miniconda/" class="uri">https://docs.anaconda.com/miniconda/</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Windows</strong></td>
+<td style="text-align: left;">下载 Miniconda 或 <a href="https://python.org/downloads/" class="uri">https://python.org/downloads/</a>（安装时勾选 “Add Python to PATH”）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Linux</strong></td>
+<td style="text-align: left;"><code>sudo apt install python3 python3-venv</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p><strong>自检</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="ex">python</span> <span class="at">--version</span>        <span class="co"># 应输出 Python 3.10.x 或更高</span></span>
+<span id="cb3-2"><a href=""></a><span class="ex">python</span> <span class="at">-m</span> venv <span class="at">--help</span>   <span class="co"># 确认 venv 可用</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="python-虚拟环境实操" class="slide level2">
+<h2>Python 虚拟环境实操</h2>
+<p><strong>创建并激活虚拟环境</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="co"># 在项目目录下</span></span>
+<span id="cb4-2"><a href=""></a><span class="bu">cd</span> demo-project</span>
+<span id="cb4-3"><a href=""></a><span class="ex">python</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb4-4"><a href=""></a></span>
+<span id="cb4-5"><a href=""></a><span class="co"># 激活（macOS / Linux）</span></span>
+<span id="cb4-6"><a href=""></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb4-7"><a href=""></a></span>
+<span id="cb4-8"><a href=""></a><span class="co"># 激活（Windows PowerShell）</span></span>
+<span id="cb4-9"><a href=""></a><span class="ex">.venv\Scripts\activate</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p><strong>安装常用包</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip</span>
+<span id="cb5-2"><a href=""></a><span class="ex">pip</span> install pandas numpy matplotlib jupyter</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p><strong>如何确认虚拟环境已激活？</strong></p>
+<p>终端提示符前会出现 <code>(.venv)</code>。输入 <code>which python</code>（macOS/Linux）或 <code>where python</code>（Windows），路径应指向 <code>.venv</code> 内。</p>
+</div>
+</section>
+<section id="python-安装常见卡点" class="slide level2">
+<h2>Python 安装常见卡点</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">问题</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">解决</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>python</code> 指向 Python 2</td>
+<td style="text-align: left;">macOS 自带的旧版本</td>
+<td style="text-align: left;">用 <code>python3</code> 代替，或安装 Miniconda</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>pip install</code> 权限错误</td>
+<td style="text-align: left;">系统 Python 受保护</td>
+<td style="text-align: left;">先用 <code>python -m venv .venv</code> 创建虚拟环境</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Windows 找不到 python</td>
+<td style="text-align: left;">未勾选 “Add to PATH”</td>
+<td style="text-align: left;">重装并勾选，或用 Miniconda</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>pip</code> 不是最新版</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;"><code>python -m pip install --upgrade pip</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="工具-3jupyter-notebook" class="slide level2">
+<h2>工具 3：Jupyter Notebook</h2>
+<p><strong>Jupyter 在研究中的角色</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">形式</th>
+<th style="text-align: left;">适合做什么</th>
+<th style="text-align: left;">不适合做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>.ipynb</code>（Notebook）</td>
+<td style="text-align: left;">探索、备忘、图表、课堂演示</td>
+<td style="text-align: left;">复杂项目的唯一入口</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>.py</code> / <code>.do</code> / <code>.m</code>（脚本）</td>
+<td style="text-align: left;">可重复脚本、批量运行、交接</td>
+<td style="text-align: left;">长篇解释与随手记录</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>.qmd</code> / <code>.md</code>（文档）</td>
+<td style="text-align: left;">讲义、报告、研究说明</td>
+<td style="text-align: left;">大规模计算</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><strong>安装与自检</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="ex">pip</span> install jupyter ipykernel</span>
+<span id="cb6-2"><a href=""></a><span class="ex">jupyter</span> <span class="at">--version</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>Notebook 负责“想清楚和跑出来”；脚本负责“可重复和可交接”。两者不是替代关系。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="工具-4github-账号-ssh-key" class="slide level2">
+<h2>工具 4：GitHub 账号 + SSH Key</h2>
+<p><strong>GitHub 账号用于远程备份和协作</strong></p>
+<p>如果只是自己电脑上的 <code>.git</code>，已经可以回退；如果要换电脑、课堂演示或合作者接手，就需要推送到 GitHub。</p>
+<div class="fragment">
+<p><strong>注册账号</strong>：<a href="https://github.com/signup" class="uri">https://github.com/signup</a>（用户名建议用真名拼音或常用英文名）</p>
+</div>
+<div class="fragment">
+<p><strong>配置 SSH Key</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="co"># 检查是否已有</span></span>
+<span id="cb7-2"><a href=""></a><span class="fu">ls</span> ~/.ssh/id_ed25519.pub</span>
+<span id="cb7-3"><a href=""></a></span>
+<span id="cb7-4"><a href=""></a><span class="co"># 如果没有，生成一个（一路回车）</span></span>
+<span id="cb7-5"><a href=""></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"your_email@example.com"</span></span>
+<span id="cb7-6"><a href=""></a></span>
+<span id="cb7-7"><a href=""></a><span class="co"># 复制公钥</span></span>
+<span id="cb7-8"><a href=""></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p>然后：GitHub → Settings → SSH and GPG keys → New SSH Key → 粘贴公钥。</p>
+<p><strong>自检</strong>：<code>ssh -T git@github.com</code>，看到 “Hi xxx!” 即成功。</p>
+</div>
+</section>
+<section id="ssh-key-常见卡点" class="slide level2">
+<h2>SSH Key 常见卡点</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">问题</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">解决</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>Permission denied</code></td>
+<td style="text-align: left;">公钥未添加到 GitHub</td>
+<td style="text-align: left;">重新检查 Settings → SSH Keys</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Could not resolve hostname</code></td>
+<td style="text-align: left;">网络问题</td>
+<td style="text-align: left;">检查是否能访问 github.com</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">已有多个 SSH Key</td>
+<td style="text-align: left;">之前为其他服务生成过</td>
+<td style="text-align: left;">用 <code>ssh -T git@github.com</code> 测试，GitHub 会自动匹配</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p>如果 SSH 配置暂时不成功，下午 Git 实操部分可以先做本地操作（<code>init</code>、<code>add</code>、<code>commit</code>），远程推送可以课后慢慢配。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="中场自检你的基础链路跑通了吗" class="slide level2">
+<h2>中场自检：你的基础链路跑通了吗？</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">检查项</th>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">✅</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">VS Code 能打开</td>
+<td style="text-align: left;"><code>code --version</code></td>
+<td style="text-align: left;">☐</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Git 已安装</td>
+<td style="text-align: left;"><code>git --version</code></td>
+<td style="text-align: left;">☐</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Git 已配置用户名和邮箱</td>
+<td style="text-align: left;"><code>git config user.name</code></td>
+<td style="text-align: left;">☐</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Python 3.10+</td>
+<td style="text-align: left;"><code>python --version</code></td>
+<td style="text-align: left;">☐</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">虚拟环境能用</td>
+<td style="text-align: left;"><code>python -m venv --help</code></td>
+<td style="text-align: left;">☐</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jupyter 已安装</td>
+<td style="text-align: left;"><code>jupyter --version</code></td>
+<td style="text-align: left;">☐</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GitHub 能登录</td>
+<td style="text-align: left;">浏览器打开 github.com</td>
+<td style="text-align: left;">☐</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SSH Key 已配置</td>
+<td style="text-align: left;"><code>ssh -T git@github.com</code></td>
+<td style="text-align: left;">☐</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>如果有问题，请记下来，课间或下午可以找我或同学一起排查。不要因为一个工具卡住就停下来。</strong></p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="三vs-code-扩展让工作台适配你的研究" class="title-slide slide level1 center" data-background-color="#003153">
+<h1>三、VS Code 扩展：让工作台适配你的研究</h1>
+
+</section>
+<section id="vs-code-扩展是什么" class="slide level2">
+<h2>VS Code 扩展是什么？</h2>
+<div class="concept-box">
+<p><strong>扩展 = VS Code 的“应用”</strong></p>
+<p>就像手机装 App 来扩展功能，VS Code 装扩展来支持不同语言（Python、Stata、LaTeX）、不同工具（Git、Jupyter、Docker）和 AI 助手。</p>
+</div>
+<div class="fragment">
+<p><strong>今天必装的扩展</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">扩展名</th>
+<th style="text-align: left;">Extension ID</th>
+<th style="text-align: left;">优先级</th>
+<th style="text-align: left;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Python</td>
+<td style="text-align: left;"><code>ms-python.python</code></td>
+<td style="text-align: left;">⭐ 必装</td>
+<td style="text-align: left;">Python 语法检查、调试、环境识别</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jupyter</td>
+<td style="text-align: left;"><code>ms-toolsai.jupyter</code></td>
+<td style="text-align: left;">⭐ 必装</td>
+<td style="text-align: left;">打开和运行 <code>.ipynb</code> Notebook</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GitLens</td>
+<td style="text-align: left;"><code>eamodio.gitlens</code></td>
+<td style="text-align: left;">⭐ 必装</td>
+<td style="text-align: left;">Git 历史可视化和行级 blame</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Markdown All in One</td>
+<td style="text-align: left;"><code>yzhang.markdown-all-in-one</code></td>
+<td style="text-align: left;">⭐ 必装</td>
+<td style="text-align: left;">Markdown 编辑增强（Day 2 用）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LaTeX Workshop</td>
+<td style="text-align: left;"><code>James-Yu.latex-workshop</code></td>
+<td style="text-align: left;">⭐ 必装</td>
+<td style="text-align: left;">LaTeX 编译与 PDF 预览（Day 2 用）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quarto</td>
+<td style="text-align: left;"><code>quarto.quarto</code></td>
+<td style="text-align: left;">🔧 建议</td>
+<td style="text-align: left;">Quarto 文档渲染</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GitHub Pull Requests</td>
+<td style="text-align: left;"><code>GitHub.vscode-pull-request-github</code></td>
+<td style="text-align: left;">🔧 建议</td>
+<td style="text-align: left;">在 VS Code 内管理 PR</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GitHub Copilot</td>
+<td style="text-align: left;"><code>GitHub.copilot</code></td>
+<td style="text-align: left;">⭐ 必装</td>
+<td style="text-align: left;">行内 AI 代码补全（已内置 Kimi 2.7 Code）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GitHub Copilot Chat</td>
+<td style="text-align: left;"><code>GitHub.copilot-chat</code></td>
+<td style="text-align: left;">⭐ 必装</td>
+<td style="text-align: left;">侧边栏 AI 对话</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="扩展安装演示" class="slide level2">
+<h2>扩展安装演示</h2>
+<p><strong>方法一：VS Code 界面安装</strong></p>
+<ol type="1">
+<li>点击左侧 Extensions 图标（或 <code>Ctrl+Shift+X</code>）</li>
+<li>搜索扩展名（如 “Python”）</li>
+<li>点击 Install</li>
+</ol>
+<div class="fragment">
+<p><strong>方法二：一键脚本安装（推荐）</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="co"># macOS / Linux</span></span>
+<span id="cb8-2"><a href=""></a><span class="fu">bash</span> scripts/install-extensions.sh</span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a><span class="co"># Windows PowerShell</span></span>
+<span id="cb8-5"><a href=""></a><span class="bu">.</span><span class="dt">\s</span>cripts<span class="dt">\i</span>nstall-extensions.ps1</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p><strong>方法三：逐条命令行安装</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> ms-python.python</span>
+<span id="cb9-2"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> ms-toolsai.jupyter</span>
+<span id="cb9-3"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> eamodio.gitlens</span>
+<span id="cb9-4"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> yzhang.markdown-all-in-one</span>
+<span id="cb9-5"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> James-Yu.latex-workshop</span>
+<span id="cb9-6"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> quarto.quarto</span>
+<span id="cb9-7"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> GitHub.vscode-pull-request-github</span>
+<span id="cb9-8"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> GitHub.copilot</span>
+<span id="cb9-9"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> GitHub.copilot-chat</span>
+<span id="cb9-10"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> vizards.deepseek-v4-for-copilot</span>
+<span id="cb9-11"><a href=""></a><span class="ex">code</span> <span class="at">--install-extension</span> johnny-zhao.oai-compatible-copilot</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="认识-demo-project" class="slide level2">
+<h2>认识 demo-project</h2>
+<div style="font-size: 1em;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href=""></a>demo-project/</span>
+<span id="cb10-2"><a href=""></a>├── data/raw/firm_panel.csv     # 原始数据（只读，可追溯）</span>
+<span id="cb10-3"><a href=""></a>├── scripts/generate_data.py    # 可复现数据生成脚本</span>
+<span id="cb10-4"><a href=""></a>├── notebooks/explore.ipynb     # 数据探索 Notebook</span>
+<span id="cb10-5"><a href=""></a>├── output/                     # 图、表输出位置</span>
+<span id="cb10-6"><a href=""></a>├── paper/main_zh.tex           # 中文 LaTeX 论文（Day 2 用）</span>
+<span id="cb10-7"><a href=""></a>├── prompts/prompt-cards.md     # 可复用提问模板</span>
+<span id="cb10-8"><a href=""></a>├── audit-log.md                # AI 使用记录</span>
+<span id="cb10-9"><a href=""></a>├── .vscode/                    # 推荐扩展 + LaTeX 编译配置</span>
+<span id="cb10-10"><a href=""></a>└── .gitignore                  # 区分"源文件"与"可再生成产物"</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p><strong>项目原则</strong></p>
+<ul>
+<li>原始数据只读</li>
+<li>脚本能从头重跑</li>
+<li>输出有固定位置</li>
+<li>AI 参与要留下记录</li>
+</ul>
+</div>
+</section>
+<section id="上手操作演示-2打开-demo-project" class="slide level2" style="text-align: center;">
+<h2>上手操作演示 2：打开 demo-project</h2>
+<ol type="1">
+<li><p>VS Code → <code>File → Open Folder</code> → 选择 <code>demo-project/</code></p></li>
+<li><p>观察 Explorer 中的文件树结构</p></li>
+<li><p>打开终端（<code>Ctrl+`</code>），确认当前目录在 <code>demo-project/</code></p></li>
+<li><p>创建虚拟环境并安装依赖：</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="ex">python</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb11-2"><a href=""></a><span class="bu">source</span> .venv/bin/activate      <span class="co"># Windows: .venv\Scripts\activate</span></span>
+<span id="cb11-3"><a href=""></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="5" type="1">
+<li>运行数据生成脚本：</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">python</span> scripts/generate_data.py</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p><strong>为什么跑这个脚本？</strong> 验证 Python 环境可用，并让你看到“同一种子→同一数据”的可复现性。</p>
+</div>
+</section>
+<section id="ai-助手登录与配置" class="slide level2">
+<h2>AI 助手登录与配置</h2>
+<div class="concept-box">
+<p><strong>Copilot 的基础角色</strong></p>
+<p>Copilot 适合低风险、机械性、容易验证的任务：补全读数据代码、生成描述统计、解释某个函数参数。</p>
+</div>
+<div class="fragment">
+<p><strong>自检方式</strong></p>
+<ol type="1">
+<li>VS Code 左下角确认 GitHub 账号已登录</li>
+<li>打开 Copilot Chat（<code>Ctrl+Shift+I</code> 或 <code>Cmd+Shift+I</code>），输入 “hello”</li>
+<li>在 <code>.py</code> 文件中输入注释，观察是否出现行内补全（灰色文字）</li>
+</ol>
+</div>
+</section>
+<section id="copilot-现已内置国产模型" class="slide level2">
+<h2>Copilot 现已内置国产模型</h2>
+<div class="example-box">
+<p><strong>Kimi 2.7 Code 已直接集成到 GitHub Copilot</strong></p>
+<p>最新版 Copilot 不再只能调用 OpenAI 模型——Kimi 2.7 Code 已<em>内置在 Copilot 中</em>。你在 Copilot Chat 中可以直接选择 Kimi 作为对话模型，无需额外配置 API Key。</p>
+<p>这意味着即使 OpenAI 服务不稳定，你仍然可以使用 Copilot 的全部功能——由月之暗面的 Kimi 模型驱动。</p>
+</div>
+<div class="fragment">
+<p><strong>如何切换模型</strong></p>
+<p>在 Copilot Chat 面板中，点击模型选择器（输入框上方或右上角下拉菜单），从列表中选择 <code>Kimi 2.7 Code</code> 即可。无需任何额外配置。</p>
+</div>
+</section>
+<section id="接入更多国产模型两个关键插件" class="slide level2">
+<h2>接入更多国产模型：两个关键插件</h2>
+<p><strong>让 Copilot Chat 变成一个“模型聚合器”——在一个界面里调用多种大模型。</strong></p>
+<div class="fragment">
+<p><strong>插件 1：DeepSeek V4 for Copilot Chat</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">项目</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Extension ID</td>
+<td style="text-align: left;"><code>vizards.deepseek-v4-for-copilot</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">作用</td>
+<td style="text-align: left;">在 Copilot Chat 中直接使用 DeepSeek V4 模型</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">安装</td>
+<td style="text-align: left;">VS Code 扩展面板搜索 <code>DeepSeek V4 for Copilot Chat</code></td>
+</tr>
+</tbody>
+</table>
+<p>安装后在 Copilot Chat 的模型选择器中会多出 <code>DeepSeek V4</code> 选项。</p>
+</div>
+<div class="fragment">
+<p><strong>插件 2：OAI Compatible Provider for Copilot Chat</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">项目</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Extension ID</td>
+<td style="text-align: left;"><code>johnny-zhao.oai-compatible-copilot</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">作用</td>
+<td style="text-align: left;">接入任何 OpenAI 兼容 API（Kimi API、Qwen API 等）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">安装</td>
+<td style="text-align: left;">VS Code 扩展面板搜索 <code>OAI Compatible Provider</code></td>
+</tr>
+</tbody>
+</table>
+<p>安装后配置你的 Kimi / Qwen / DeepSeek / 硅基流动 API Key，就可以在 Copilot Chat 中直接调用这些模型。</p>
+</div>
+</section>
+<section id="集成式-ai-编程环境对比" class="slide level2">
+<h2>集成式 AI 编程环境对比</h2>
+<div class="concept-box">
+<p><strong>为什么要在 VS Code 内部解决，而不是开浏览器聊天？</strong></p>
+<p>浏览器里的 AI 聊天只能看到你复制粘贴的片段。VS Code 里的 AI 助手<em>能读你的项目文件、看到终端输出、理解项目结构</em>。这是“一站式科研”理念在 AI 层面的核心体现。</p>
+</div>
+<div class="fragment">
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">工具</th>
+<th style="text-align: left;">类型</th>
+<th style="text-align: left;">适合场景</th>
+<th style="text-align: left;">今天要知道什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>GitHub Copilot</strong></td>
+<td style="text-align: left;">VS Code 原生插件</td>
+<td style="text-align: left;">行内补全 + Chat 对话</td>
+<td style="text-align: left;">已安装，低风险首选</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Claude Code</strong></td>
+<td style="text-align: left;">VS Code 插件 / 终端 CLI</td>
+<td style="text-align: left;">项目级多文件任务、Agent 自动化</td>
+<td style="text-align: left;">进阶篇会专门讲（Day 2 下午预告）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>OpenAI Codex</strong></td>
+<td style="text-align: left;">VS Code 插件 / 终端 CLI</td>
+<td style="text-align: left;">OpenAI 生态的项目级 Agent</td>
+<td style="text-align: left;">与 Claude Code 类似定位</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Kimi Code</strong></td>
+<td style="text-align: left;">VS Code 插件</td>
+<td style="text-align: left;">中文友好、长文本理解</td>
+<td style="text-align: left;">Kimi 生态的代码助手</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>提示</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>一句话总结</strong></p>
+<ul>
+<li><strong>Copilot</strong>（含 Kimi） = 贴身助手：行内补全、局部问答、模型可选</li>
+<li><strong>Claude Code / Codex / Kimi Code</strong> = 项目级工程师：多文件改动、运行验证、任务自动化</li>
+<li><strong>DeepSeek V4 + OAI Compatible</strong> = 模型聚合器：把国产大模型接进同一个 Copilot Chat 界面</li>
+</ul>
+<p>今天先把 Copilot 跑通、国产模型接进来。Claude Code / Codex 的项目级 Agent 工作流会在 Day 2 下午预告，进阶篇深入展开。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="上午小结" class="slide level2">
+<h2>上午小结</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">检查项</th>
+<th style="text-align: left;">完成标准</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">VS Code</td>
+<td style="text-align: left;">能打开 <code>demo-project/</code> 文件夹</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Git</td>
+<td style="text-align: left;"><code>git --version</code> 有输出，已配置用户名和邮箱</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Python</td>
+<td style="text-align: left;"><code>python --version</code> 有输出，虚拟环境已创建</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jupyter</td>
+<td style="text-align: left;"><code>jupyter --version</code> 有输出</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GitHub</td>
+<td style="text-align: left;">能登录 github.com，SSH Key 已添加</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VS Code 扩展</td>
+<td style="text-align: left;">Python、Jupyter、GitLens、Copilot 等已安装</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">demo-project</td>
+<td style="text-align: left;">能看到标准目录结构</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<div class="example-box">
+<p><strong>内容预告</strong></p>
+<p>进入 Git/GitHub 深化——学习版本回退、分支管理、远程协作，建立 AI 时代的<em>研究安全网</em>。</p>
+</div>
+</div>
+</section></section>
+<section id="qa" class="title-slide slide level1 center" data-background-color="#003153">
+<h1>Q&amp;A</h1>
+<ul>
+<li><strong>下午内容</strong> Git / GitHub 深化：本地工作流、版本回退、分支、远程协作</li>
+<li><strong>Day 2 预告</strong> Markdown + LaTeX 中文写作 + AI 助手入门</li>
+<li><strong>Email</strong> chenzhiyuan@rmbs.ruc.edu.cn</li>
+<li><strong>个人主页</strong> <a href="https://zhiyuanryanchen.github.io" class="uri">https://zhiyuanryanchen.github.io</a></li>
+</ul>
+<aside class="notes">
+<p>上午目标：工具装上、工作台打开。下午才真正进入 Git 深度实操。如果学生问 MCP/Agents 等问题，先说“那是进阶篇的内容，今天先把基础环境跑通”。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="day1_am_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="day1_am_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="day1_am_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="day1_am_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="day1_am_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="day1_am_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="day1_am_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="day1_am_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="day1_am_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="day1_am_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1400,
+
+        height: 788,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "已复制");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "已复制");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

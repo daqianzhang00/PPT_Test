@@ -1,0 +1,94 @@
+---
+title: "Artificial Intelligence, Uncertainty, and Investment Efficiency"
+author: "Qikai Zhang, Industrial Economics"
+institute: "Jiangxi University of Finance and Economics, School of Digital Economics"
+date: "2026-08-07"
+format:
+  revealjs:
+    theme: [default, JFDE-theme.scss]
+    css: JFDE-theme.scss
+    slide-number: true
+    progress: true
+    code-fold: false
+    code-tools: true
+    highlight-style: github
+    pdf-separate-fragments: false
+    width: 1920
+    height: 1080
+    margin: 0.05
+    transition: slide
+    background-transition: fade
+    toc: true
+    toc-depth: 1
+    chalkboard:
+      buttons: true
+    preview-links: auto
+execute:
+  echo: true
+  warning: false
+  message: false
+  eval: false
+  cache: false
+lang: en
+html-math-method: katex
+citeproc: true
+bibliography: references.bib
+---
+
+# Institution Background
+## Policy about Investment Efficiency
+|Key Words|Source|Date|
+|---|---|---|
+|"From three perspectives acurately promote the efficiency of investment"|National Development and Reform Commission|January 3, 2025|
+|"Expand effective investment"|2025 government work report|March 5, 2025|
+|"Expanding effective investment"|the 15th Five-Year Plan|October 28, 2025|
+|"fully tap and unleash the potential of effective investment"|2026 government work report|March 19, 2026|
+# Research Background
+## Efficiency of Investment from a Traditional Perspective
+1. **Principal-agent problem**: The Objective Function of the agent is not consistent with that of the principal, which leads to the problem of investment efficiency[@JensenandMeckling1976; @Jensen1986].
+2. **Information asymmetry**: The principal cannot obtain the complete information of the agent, which leads to the problem of investment efficiency[@Myers1984].
+
+::: {.fragment .fade-in}
+::: {.concept-box}
+**3. Uncertainty**
+The principal cannot obtain the complete information of the agent, which leads to the problem of investment efficiency[@julio2012political].
+:::
+:::
+
+## The effect of Artificial Intelligence
+1. Modify the weight of public information, improve the accuracy of management's judgment[@bianchi2022belief]
+2. Enhance the productivity of employees[@brynjolfsson2025generative]
+3. Promote total factor productivity[@acemoglu2025simple]
+4. Improve corporate performance and growth rate[@mishra2022artificial; @babina2024artificial]
+5. Reduce the risk premium of investment[@vespignani2024artificial]
+
+## Reference
+::: {#refs}
+:::
+
+```{=html}
+<script>
+(function() {
+  var observer = new MutationObserver(function() {
+    var reveal = document.querySelector('.reveal');
+    if (reveal && window.Reveal) {
+      observer.disconnect();
+      // 首页（title slide）隐藏页码
+      function toggleSlideNumber() {
+        var num = document.querySelector('.reveal .slide-number');
+        if (!num) return;
+        var indices = Reveal.getIndices();
+        if (indices.h === 0 && indices.v === 0) {
+          num.style.visibility = 'hidden';
+        } else {
+          num.style.visibility = '';
+        }
+      }
+      Reveal.on('ready', toggleSlideNumber);
+      Reveal.on('slidechanged', toggleSlideNumber);
+    }
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
+```

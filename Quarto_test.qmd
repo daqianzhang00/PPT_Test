@@ -1,0 +1,79 @@
+---
+title: "Artificial Intelligence, Uncertainty, and Investment Efficiency"
+author: "Qikai Zhang, Industrial Economics"
+institute: "Jiangxi University of Finance and Economics, School of Digital Economics"
+date: "2026-08-07"
+format:
+  revealjs:
+    theme: [default, jufe-theme.scss]
+    css: jufe-theme.scss
+    slide-number: true
+    progress: true
+    code-fold: false
+    code-tools: true
+    highlight-style: github
+    pdf-separate-fragments: false
+    width: 1920
+    height: 1080
+    margin: 0.05
+    transition: slide
+    background-transition: fade
+    toc: true
+    toc-depth: 1
+    chalkboard:
+      buttons: true
+    preview-links: auto
+execute:
+  echo: true
+  warning: false
+  message: false
+  eval: false
+  cache: false
+lang: en
+html-math-method: katex
+citeproc: true
+bibliography: references.bib
+---
+
+::: {.callout-note}
+## 这是一条备注
+补充说明内容...
+:::
+
+::: {.callout-warning}
+## 注意
+这里是需要留意的警告信息。
+:::
+
+::: {.callout-tip}
+## 小技巧
+这是一个实用建议。
+:::
+
+
+```{=html}
+<script>
+(function() {
+  var observer = new MutationObserver(function() {
+    var reveal = document.querySelector('.reveal');
+    if (reveal && window.Reveal) {
+      observer.disconnect();
+      // 首页（title slide）隐藏页码
+      function toggleSlideNumber() {
+        var num = document.querySelector('.reveal .slide-number');
+        if (!num) return;
+        var indices = Reveal.getIndices();
+        if (indices.h === 0 && indices.v === 0) {
+          num.style.visibility = 'hidden';
+        } else {
+          num.style.visibility = '';
+        }
+      }
+      Reveal.on('ready', toggleSlideNumber);
+      Reveal.on('slidechanged', toggleSlideNumber);
+    }
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
+```

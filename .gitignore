@@ -1,0 +1,16 @@
+# Quarto generated files (optional — remove if you want to track rendered HTML)
+*_files/
+
+# R / Python
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+__pycache__/
+*.py[cod]
+.venv/
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
