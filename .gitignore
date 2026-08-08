@@ -1,16 +1,17 @@
-# Quarto generated files (optional — remove if you want to track rendered HTML)
-*_files/
-
-# R / Python
-.Rproj.user/
-.Rhistory
-.RData
-.Ruserdata
-__pycache__/
-*.py[cod]
+# Python 虚拟环境与缓存（可再生成，不入库）
 .venv/
+__pycache__/
+*.pyc
 .ipynb_checkpoints/
 
-# OS files
+# LaTeX 编译中间产物（由 .tex 源文件再生成）
+*.aux
+*.log
+*.out
+*.synctex.gz
+
+# 系统文件
 .DS_Store
 Thumbs.db
+/.quarto/
+**/*.quarto_ipynb
