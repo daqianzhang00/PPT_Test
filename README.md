@@ -11,17 +11,17 @@
 4. **强调框格式修改**：原文件强调框颜色和文字颜色对比度较差，修改稿强化了对比度，增强阅读性。
 5. **页码设置**：增加了Slide页码。
 
-调整后Slide表现良好，测试Slide参见[AI_Investment.html](./AI_Investment.html).
+调整后Slide表现良好，测试Slide参见[AI_Investment.html](./ai_investment.html).
 ## 四、渲染方法(仅展示Windows)
 1. **在VS Code中安装Quarto。**
 ```
 code --install-extension quarto.quarto
 ```
-2. **编译自己的.qmd文件。**.qmd文件包括两个部分，第一部分是*YAML头部*，用于设置元数据和指定模板，第二部分是*正文内容*，语言格式与Markdown语言相同。
-3. **用Quarto渲染。**在VS Code终端框内输入渲染代码：
+2. **编译自己的.qmd文件。** .qmd文件包括两个部分，第一部分是*YAML头部*，用于设置元数据和指定模板，第二部分是*正文内容*，语言格式与Markdown语言相同。
+3. **用Quarto渲染。** 在VS Code终端框内输入渲染代码：
 ```Powershell
 Quarto render 渲染文件名.qmd
 ```
-4. **查看渲染文件。**渲染后的文件名为*渲染文件名.html*，可在浏览器或VS Code中正常打开，则说明渲染成功。
+4. **查看渲染文件。** 渲染后的文件名为*渲染文件名.html*，可在浏览器或VS Code中正常打开，则说明渲染成功。
 ## 五、致谢
-感谢陈志远老师精彩纷呈的教学，作者做此分享的目的一部分也是为了练习课上所学的git版本控制和github远程协作，同时也是对制作Slide有一定兴趣，欢迎同对制作Slide感兴趣的同学通过邮箱[qikaizhang2002@qq.com](mailto:qikaizhang2002@qq.com)与我联系。
+感谢陈志远老师精彩纷呈的教学，作者做此分享的目的一部分也是为了练习课上所学的git版本控制和github远程协作，同时也是对制作Slide有一定兴趣。欢迎同对制作Slide感兴趣的同学通过邮箱[qikaizhang2002@qq.com](mailto:qikaizhang2002@qq.com)与我联系。
